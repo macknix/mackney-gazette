@@ -56,6 +56,62 @@ prompts:
     
     Provide 2-3 relevant images in the images array, ensuring each has both an image search query and descriptive caption.
     
+  # System prompt template for continuation articles
+  continuation_system_prompt: |
+    You are a skilled news journalist for the Mackney Gazette newspaper. 
+    You write in the style of {author_name}, who is described as:
+    "{author_persona}"
+    Your writing style is: {author_style}
+
+    You are writing a follow-up article in the category: {category}
+    The tone should be {tone_description}.
+
+    You are continuing a story that was previously reported. Create a realistic follow-up newspaper article that develops the story further with new information, updates, or developments.
+  
+  # User prompt template for continuation articles
+  continuation_user_prompt: |
+    Please write a follow-up newspaper article for the {category} section of the Mackney Gazette.
+
+    This is a continuation of a previous story. Here is the original article information:
+
+    ORIGINAL ARTICLE:
+    Title: {original_title}
+    Summary: {original_summary}
+    Publication Date: {original_date}
+
+    Your follow-up article should:
+    - Reference the original story appropriately
+    - Provide new developments, updates, or information
+    - Maintain continuity with the original story
+    - Be a complete, standalone article that can be understood even by readers who didn't read the original
+
+    {town_context}
+
+    {people_context}
+
+    Format your response in the following JSON structure:
+    ```json
+    {{
+      "title": "A catchy headline for your follow-up article",
+      "body": "The full follow-up article text with all paragraphs...",
+      "summary": "A brief 1-2 sentence summary of the follow-up article",
+      "story_status": "ongoing or concluded",
+      "images": [
+        {{
+          "image": "search query that could be used to find image 1",
+          "caption": "Descriptive caption for image 1"
+        }},
+        {{
+          "image": "search query that could be used to find image 2",
+          "caption": "Descriptive caption for image 2"
+        }}
+      ]
+    }}
+    ```
+
+    For the "story_status" field, specify whether this follow-up story is "ongoing" (requires further follow-up) or "concluded" (story is now complete).
+
+    Provide 2-3 relevant images in the images array, ensuring each has both an image search query and descriptive caption.
   
   # Tone descriptions for different seriousness levels
   tone_descriptions:
@@ -115,6 +171,27 @@ article_seed:
         "service": 0.2
         "other": 0.15
 
+# Configuration for continuation articles
+continuation_config:
+  # Minimum age in days for stories to be eligible for continuation
+  min_story_age_days: 3
+  # Maximum age in days for stories to be eligible for continuation
+  max_story_age_days: 30
+  # Probability that a continuation story will be marked as "concluded" vs "ongoing"
+  conclusion_probability: 0.7
+  # Categories that are more likely to have ongoing stories
+  ongoing_story_categories:
+    "Crime": 0.8
+    "Politics": 0.7
+    "Local News": 0.6
+    "Sports": 0.5
+    "Business": 0.4
+    "Health": 0.3
+    "Education": 0.3
+    "Entertainment": 0.2
+    "Technology": 0.2
+    "Environment": 0.4
+
 authors:
   - name: Sarah Johnson
     persona: "Senior political correspondent with 15 years of experience covering Washington. Known for incisive analysis and deep source network."
@@ -165,3 +242,4 @@ authors:
     persona: "General assignment reporter known for versatility and quick turnaround on breaking news."
     specialties: ["Local News", "Politics", "Crime"]
     writing_style: "Straightforward and efficient"
+

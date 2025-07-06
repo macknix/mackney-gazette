@@ -652,5 +652,432 @@ def search_for_article_images(article_images: List[Dict[str, str]], credentials_
         
     return enhanced_images
 
+def continue_existing_story():
+    """
+    Continue an existing ongoing story by sampling from articles.csv to find
+    ongoing stories from at least 3 days ago, then generate a continuation.
+    
+    This function:
+    1. Searches for ongoing stories that are at least 3 days old
+    2. Randomly selects one story to continue
+    3. Generates a follow-up article using the LLM with a specialized prompt
+    4. Preserves the original article's metadata (category, author, tone, etc.)
+    5. Marks the original story as "concluded" 
+    6. Sets the new article's parent_article_id to link them
+    7. Appends the continuation to articles.csv
+    
+    Returns:
+        Dict containing the generated continuation article data, or None if no suitable story found
+    """
+    print("\n=== SEARCHING FOR ONGOING STORIES TO CONTINUE ===")
+    
+    # Get the directory of the current file
+    current_dir = Path(__file__).parent
+    data_dir = Path(current_dir).parent.parent.parent / 'data'
+    
+    # Load configuration
+    config_file = current_dir / 'article_config.yaml'
+    config = load_config(config_file)
+    
+    # Load existing articles
+    csv_file = data_dir / 'articles.csv'
+    if not csv_file.exists():
+        print("No articles.csv file found. Cannot continue existing stories.")
+        return None
+        
+    try:
+        articles_df = pd.read_csv(csv_file)
+    except Exception as e:
+        print(f"Error reading articles.csv: {e}")
+        return None
+    
+    # Filter for ongoing stories that are at least 3 days old
+    continuation_config = config.get('continuation_config', {})
+    min_age_days = continuation_config.get('min_story_age_days', 3)
+    max_age_days = continuation_config.get('max_story_age_days', 30)
+    
+    min_date = datetime.datetime.now() - datetime.timedelta(days=max_age_days)
+    max_date = datetime.datetime.now() - datetime.timedelta(days=min_age_days)
+    
+    # Convert publication_date to datetime for comparison
+    articles_df['publication_date'] = pd.to_datetime(articles_df['publication_date'], format='mixed', errors='coerce')
+    
+    # Find eligible ongoing stories
+    eligible_stories = articles_df[
+        (articles_df['story_status'] == 'ongoing') & 
+        (articles_df['publication_date'] >= min_date) &
+        (articles_df['publication_date'] <= max_date)
+    ]
+    
+    if eligible_stories.empty:
+        print(f"No ongoing stories found that are between {min_age_days} and {max_age_days} days old.")
+        return None
+    
+    print(f"Found {len(eligible_stories)} eligible ongoing stories")
+    
+    # Randomly sample one story to continue
+    original_story = eligible_stories.sample(1).iloc[0]
+    
+    print(f"\nSelected story to continue:")
+    print(f"  ID: {original_story['article_id']}")
+    print(f"  Title: {original_story['title']}")
+    print(f"  Category: {original_story['category']}")
+    print(f"  Publication Date: {original_story['publication_date'].strftime('%Y-%m-%d')}")
+    print(f"  Author: {original_story['author']}")
+    
+    # Find the author info from config
+    author_info = None
+    for author in config['authors']:
+        if author['name'] == original_story['author']:
+            author_info = author
+            break
+    
+    # If original author not found, select a random author from the same category
+    if author_info is None:
+        print(f"Original author '{original_story['author']}' not found in config. Selecting new author...")
+        category_authors = [
+            author for author in config['authors'] 
+            if original_story['category'] in author.get('specialties', [])
+        ]
+        if category_authors:
+            author_info = random.choice(category_authors)
+        else:
+            author_info = random.choice(config['authors'])
+    
+    # Load town and people data (same as create_new_story)
+    town_data_file = data_dir / 'town_data.json'
+    people_data_file = data_dir / 'people_data.csv'
+    
+    town_data = load_town_data(town_data_file)
+    people_data = load_people_data(people_data_file)
+    
+    # Generate new article ID
+    article_id = f"ART-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
+    
+    # Use the same seriousness level as the original story
+    seriousness = original_story.get('seriousness', 'balanced')
+    if pd.isna(seriousness) or not isinstance(seriousness, str):
+        seriousness = 'balanced'
+    
+    print(f"\n--- GENERATING CONTINUATION ARTICLE {article_id} ---")
+    print(f"Category: {original_story['category']}")
+    print(f"Author: {author_info['name']} ({author_info['writing_style']})")
+    print(f"Tone: {seriousness.replace('_', ' ').title()}")
+    print(f"Continuing story: {original_story['article_id']}")
+    
+    # Sample town and people data (similar to create_new_story but simplified)
+    article_town_data = {}
+    article_people_data = []
+    
+    # Sample town data if available
+    if town_data and 'article_seed' in config and 'town_data' in config['article_seed']:
+        town_config = config['article_seed']['town_data']
+        
+        if random.random() < town_config.get('inclusion_probability', 0.5):
+            article_town_data = {
+                'town_name': town_data.get('name', ''),
+                'town_population': town_data.get('population', 0),
+                'town_features': {}
+            }
+            
+            # Sample features (simplified version)
+            feature_weights = town_config.get('feature_weights', {})
+            
+            # Streets
+            if 'streets' in town_data and 'streets' in feature_weights:
+                street_config = feature_weights['streets']
+                if random.random() < street_config.get('probability', 0.5):
+                    max_streets = street_config.get('max_count', 1)
+                    num_streets = min(max_streets, len(town_data['streets']))
+                    if num_streets > 0:
+                        sampled_streets = random.sample(town_data['streets'], num_streets)
+                        article_town_data['town_features']['streets'] = sampled_streets
+            
+            # Landmarks
+            if 'landmarks' in town_data and 'landmarks' in feature_weights:
+                landmark_config = feature_weights['landmarks']
+                if random.random() < landmark_config.get('probability', 0.5):
+                    max_landmarks = landmark_config.get('max_count', 1)
+                    num_landmarks = min(max_landmarks, len(town_data.get('landmarks', [])))
+                    if num_landmarks > 0:
+                        sampled_landmarks = random.sample(town_data['landmarks'], num_landmarks)
+                        article_town_data['town_features']['landmarks'] = sampled_landmarks
+            
+            # Businesses
+            if 'businesses' in town_data and 'businesses' in feature_weights:
+                business_config = feature_weights['businesses']
+                if random.random() < business_config.get('probability', 0.5):
+                    max_businesses = business_config.get('max_count', 1)
+                    num_businesses = min(max_businesses, len(town_data.get('businesses', [])))
+                    if num_businesses > 0:
+                        sampled_businesses = random.sample(town_data['businesses'], num_businesses)
+                        article_town_data['town_features']['businesses'] = sampled_businesses
+    
+    # Sample people data if available
+    if not people_data.empty and 'article_seed' in config and 'people_data' in config['article_seed']:
+        people_config = config['article_seed']['people_data']
+        
+        if random.random() < people_config.get('inclusion_probability', 0.5):
+            min_people = people_config.get('min_people_per_article', 1)
+            max_people = people_config.get('max_people_per_article', 3)
+            num_people = random.randint(min_people, max_people)
+            
+            if len(people_data) > 0:
+                sample_size = min(num_people, len(people_data))
+                sampled_people = people_data.sample(sample_size)
+                article_people_data = sampled_people.to_dict('records')
+    
+    # Generate continuation article content using a modified prompt
+    content = generate_continuation_article_content(
+        original_story, 
+        author_info, 
+        article_town_data, 
+        article_people_data, 
+        seriousness, 
+        config
+    )
+    
+    # Get the generated image suggestions
+    images = content.get('images', [])
+    if images is None:
+        images = []
+    
+    # Search for actual images based on the suggestions
+    if images and len(images) > 0:
+        print("\n=== SEARCHING FOR ARTICLE IMAGES ===")
+        images_with_urls = search_for_article_images(images)
+    else:
+        images_with_urls = []
+    
+    # Convert the enhanced image list to a JSON string for storage
+    images_json = json.dumps(images_with_urls)
+    
+    # Create the continuation article
+    continuation_article = {
+        'article_id': article_id,
+        'title': content['title'],
+        'slug': content['title'].lower().replace(' ', '-').replace(',', '').replace('.', '').replace('\'', '').replace('"', '')[:50],
+        'body': content['body'],
+        'summary': content['summary'],
+        'images': images_json,
+        'publication_date': datetime.datetime.now().strftime('%Y-%m-%d'),
+        'last_updated': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'author': author_info['name'],
+        'author_persona': author_info['persona'],
+        'author_style': author_info['writing_style'],
+        'category': original_story['category'],
+        'status': 'Draft',
+        'story_status': content.get('story_status', 'concluded'),  # Use LLM output, but may override below
+        'seriousness': seriousness,
+        'parent_article_id': original_story['article_id'],  # Link to the original story
+    }
+    
+    # Override story_status based on configuration probabilities
+    continuation_config = config.get('continuation_config', {})
+    conclusion_probability = continuation_config.get('conclusion_probability', 0.7)
+    
+    # Check if this category has specific ongoing story tendencies
+    ongoing_story_categories = continuation_config.get('ongoing_story_categories', {})
+    category_ongoing_prob = ongoing_story_categories.get(original_story['category'], 0.3)
+    
+    # Calculate final conclusion probability (balance between config and category tendency)
+    final_conclusion_prob = (conclusion_probability + (1 - category_ongoing_prob)) / 2
+    
+    print(f"\n=== STORY STATUS DETERMINATION ===")
+    print(f"Category: {original_story['category']}")
+    print(f"Base conclusion probability: {conclusion_probability}")
+    print(f"Category ongoing tendency: {category_ongoing_prob}")
+    print(f"Final conclusion probability: {final_conclusion_prob:.2f}")
+    
+    # Apply the probability to determine final story status
+    if random.random() < final_conclusion_prob:
+        continuation_article['story_status'] = 'concluded'
+        print(f"Final story status: concluded")
+    else:
+        continuation_article['story_status'] = 'ongoing'
+        print(f"Final story status: ongoing")
+    
+    # Update the original story to mark it as concluded
+    articles_df.loc[articles_df['article_id'] == original_story['article_id'], 'story_status'] = 'concluded'
+    
+    # Add the continuation article to the dataframe
+    continuation_df = pd.DataFrame([continuation_article])
+    updated_df = pd.concat([articles_df, continuation_df], ignore_index=True)
+    
+    # Save the updated dataframe back to CSV
+    try:
+        updated_df.to_csv(csv_file, index=False)
+        print(f"\nCreated continuation article with ID: {article_id}")
+        print(f"Marked original story {original_story['article_id']} as concluded")
+        return continuation_article
+    except Exception as e:
+        print(f"Error saving continuation article: {e}")
+        return None
+
+def generate_continuation_article_content(
+    original_story: pd.Series,
+    author_info: Dict[str, Any],
+    article_town_data: Dict[str, Any] = None,
+    article_people_data: List[Dict[str, Any]] = None,
+    seriousness: str = "balanced",
+    config: Dict[str, Any] = None
+) -> Dict[str, str]:
+    """
+    Generate continuation article content using the OpenAI API.
+    
+    Args:
+        original_story: The original story data from the dataframe
+        author_info: Information about the author
+        article_town_data: Optional town data to include
+        article_people_data: Optional list of people data to include
+        seriousness: The tone of the article
+        config: Configuration data
+        
+    Returns:
+        Dictionary containing the generated title, body, and summary
+    """
+    print("\n=== GENERATING CONTINUATION ARTICLE CONTENT WITH OPENAI ===")
+    
+    # If config is not provided, load it
+    if config is None:
+        current_dir = Path(__file__).parent
+        config_file = current_dir / 'article_config.yaml'
+        config = load_config(config_file)
+    
+    # Get tone description from config
+    prompt_templates = config.get('prompts', {})
+    tone_descriptions = prompt_templates.get('tone_descriptions', {})
+    tone_description = tone_descriptions.get(seriousness, tone_descriptions.get("balanced", "with a balanced tone"))
+    
+    # Create system prompt for continuation using template from config
+    system_prompt_template = prompt_templates.get('continuation_system_prompt', '')
+    system_prompt = system_prompt_template.format(
+        author_name=author_info['name'],
+        author_persona=author_info['persona'],
+        author_style=author_info.get('writing_style', 'professional'),
+        category=original_story['category'],
+        tone_description=tone_description
+    )
+    
+    # Build town context string
+    town_context = ""
+    if article_town_data and article_town_data.get('town_name'):
+        town_context += f"The follow-up article should be set in {article_town_data['town_name']}, "
+        town_context += f"a town with a population of {article_town_data.get('town_population', 'unknown')}. "
+        town_context += "Continue to use the same local setting as the original story."
+        
+        # Add featured streets if available
+        if 'town_features' in article_town_data and 'streets' in article_town_data['town_features']:
+            streets = article_town_data['town_features']['streets']
+            if streets:
+                town_context += f"You may mention these streets: {', '.join([s.get('name', 'Unknown Street') for s in streets])}. "
+                
+        # Add landmarks if available
+        if 'town_features' in article_town_data and 'landmarks' in article_town_data['town_features']:
+            landmarks = article_town_data['town_features']['landmarks']
+            if landmarks:
+                town_context += f"You may mention these landmarks: {', '.join([l.get('name', 'Unknown Landmark') for l in landmarks])}. "
+                
+        # Add businesses if available
+        if 'town_features' in article_town_data and 'businesses' in article_town_data['town_features']:
+            businesses = article_town_data['town_features']['businesses']
+            if businesses:
+                town_context += f"You may mention these local businesses: {', '.join([b.get('name', 'Unknown Business') for b in businesses])}. "
+    
+    # Build people context string
+    people_context = ""
+    if article_people_data and len(article_people_data) > 0:
+        people_context += "Include quotes from these people in your follow-up article:\n"
+        for person in article_people_data:
+            name = f"{person.get('first_name', '')} {person.get('last_name', '')}"
+            people_context += f"- {name}, {person.get('age', 'Unknown')}, {person.get('occupation', 'resident')}"
+            if person.get('temperament_type'):
+                people_context += f", who tends to be {person.get('temperament_description', 'a local resident')}"
+            people_context += ".\n"
+    
+    # Create user prompt for continuation using template from config
+    user_prompt_template = prompt_templates.get('continuation_user_prompt', '')
+    user_prompt = user_prompt_template.format(
+        category=original_story['category'],
+        original_title=original_story['title'],
+        original_summary=original_story['summary'],
+        original_date=original_story['publication_date'],
+        town_context=town_context,
+        people_context=people_context
+    )
+    
+    # Create messages for the API call
+    messages = [
+        {'role': 'user', 'content': user_prompt}
+    ]
+    
+    # Set model parameters for article generation
+    model_args = {
+        'model': 'gpt-4o-mini',
+        'temperature': 0.8,
+        'max_tokens': 2000,
+        'response_format': {'type': 'json_object'}
+    }
+    
+    try:
+        # Call the OpenAI API
+        response_text = call_openai_api(system_prompt, messages, model_args)
+        
+        # Parse the JSON response
+        response_data = json.loads(response_text)
+        
+        # Extract the article content
+        title = response_data.get('title', f"Follow-up: {original_story['title']}")
+        body = response_data.get('body', "No content generated.")
+        summary = response_data.get('summary', "No summary available.")
+        images = response_data.get('images', [])
+        story_status = response_data.get('story_status', "concluded")
+        
+        # Normalize story status
+        story_status = story_status.lower().strip()
+        if story_status not in ["ongoing", "concluded"]:
+            story_status = "concluded"  # Default for continuations
+        
+        print(f"\nGenerated follow-up title: {title}")
+        print(f"\nSummary: {summary[:100]}...")
+        print(f"\nStory status: {story_status}")
+        if images:
+            print(f"\nSuggested {len(images)} images for the follow-up article")
+        
+        return {
+            'title': title,
+            'body': body,
+            'summary': summary,
+            'story_status': story_status,
+            'images': images
+        }
+    except Exception as e:
+        print(f"\nError generating continuation article content: {e}")
+        return {
+            'title': f"Follow-up: {original_story['title']}",
+            'body': "This is a placeholder for the follow-up article body.",
+            'summary': "This is a placeholder summary for the follow-up article.",
+            'story_status': 'concluded',
+            'images': []
+        }
+
 if __name__ == "__main__":
-    create_new_story()
+    import sys
+    
+    # Check if a function name is provided as a command line argument
+    if len(sys.argv) > 1:
+        function_name = sys.argv[1]
+        if function_name == "continue_existing_story":
+            result = continue_existing_story()
+            if result:
+                print(f"\nSuccessfully created continuation article: {result['title']}")
+            else:
+                print("\nNo continuation article was created.")
+        elif function_name == "create_new_story":
+            create_new_story()
+        else:
+            print(f"Unknown function: {function_name}")
+            print("Available functions: create_new_story, continue_existing_story")
+    else:
+        # Default behavior - create new story
+        create_new_story()
