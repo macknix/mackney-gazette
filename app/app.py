@@ -26,13 +26,19 @@ def load_articles():
         # Convert DataFrame to list of dictionaries
         articles = df.to_dict('records')
         
-        # Parse the JSON stored in the 'images' column
+        # Clean up the data
         for article in articles:
+            # Parse the JSON stored in the 'images' column
             if 'images' in article and article['images']:
                 try:
                     article['images'] = json.loads(article['images'])
                 except:
                     article['images'] = []
+            
+            # Clean up parent_article_id - convert NaN to None
+            if 'parent_article_id' in article:
+                if pd.isna(article['parent_article_id']):
+                    article['parent_article_id'] = None
                     
         # Sort by publication date (newest first)
         articles.sort(key=lambda x: x.get('publication_date', ''), reverse=True)

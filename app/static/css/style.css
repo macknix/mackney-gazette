@@ -244,6 +244,31 @@ header {
     position: relative;
 }
 
+/* Story chain indicator badge */
+.story-chain-indicator {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.story-chain-indicator:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    text-decoration: none !important;
+    color: white !important;
+    background-color: #0056b3 !important;
+}
+
+.story-chain-indicator:focus {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.story-chain-indicator:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.4);
+}
+
 .story-chain-articles::before {
     content: '';
     position: absolute;
