@@ -11,9 +11,6 @@ articles:
     # Number of story continuations to generate per day
     count: 2
     
-    # Whether to generate continuations before new stories
-    generate_first: true
-    
     # Maximum number of attempts to find eligible stories to continue
     max_attempts: 5
   

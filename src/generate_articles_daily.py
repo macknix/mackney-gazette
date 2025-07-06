@@ -54,7 +54,6 @@ def generate_articles_daily(config_path: Optional[str] = None) -> List[Dict[str,
     # Story continuation configuration
     story_continuation_config = config["articles"].get("story_continuation", {})
     continuation_count = story_continuation_config.get("count", 0)
-    generate_continuations_first = story_continuation_config.get("generate_first", True)
     max_continuation_attempts = story_continuation_config.get("max_attempts", 5)
 
     # Display configuration
@@ -62,7 +61,6 @@ def generate_articles_daily(config_path: Optional[str] = None) -> List[Dict[str,
     print(f"Generating {article_count} new articles")
     if continuation_count > 0:
         print(f"Generating {continuation_count} story continuations")
-        print(f"Generate continuations first: {generate_continuations_first}")
     
     print(f"Total articles to generate: {article_count + continuation_count}")
 
