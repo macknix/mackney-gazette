@@ -22,8 +22,8 @@ from pathlib import Path
 from typing import Optional, Dict, Any, List
 import datetime
 
-# Import the article generation function
-from src.utils.data.generate_article import create_new_story
+# Import the article generation functions
+from src.utils.data.generate_article import create_new_story, continue_existing_story
 
 
 def generate_articles_daily(config_path: Optional[str] = None) -> List[Dict[str, Any]]:
@@ -50,10 +50,19 @@ def generate_articles_daily(config_path: Optional[str] = None) -> List[Dict[str,
     article_count = config["articles"]["count"]
     backup_before_save = config["articles"]["save_options"]["backup_before_save"]
     article_limit = config["articles"]["save_options"]["article_limit"]
+    
+    # Story continuation configuration
+    story_continuation_config = config["articles"].get("story_continuation", {})
+    continuation_count = story_continuation_config.get("count", 0)
+    max_continuation_attempts = story_continuation_config.get("max_attempts", 5)
 
     # Display configuration
     print(f"====== DAILY ARTICLE GENERATION - {datetime.datetime.now().strftime('%Y-%m-%d')} ======")
-    print(f"Generating {article_count} articles")
+    print(f"Generating {article_count} new articles")
+    if continuation_count > 0:
+        print(f"Generating {continuation_count} story continuations")
+    
+    print(f"Total articles to generate: {article_count + continuation_count}")
 
     # Backup articles.csv if enabled
     if backup_before_save:
@@ -65,24 +74,74 @@ def generate_articles_daily(config_path: Optional[str] = None) -> List[Dict[str,
             shutil.copy2(articles_csv, backup_file)
             print(f"Backed up articles file to {backup_file}")
 
-    # Generate the specified number of articles
     generated_articles = []
+    successful_continuations = 0
+    
+    # Generate story continuations if configured
+    if continuation_count > 0:
+        print(f"\n=== STORY CONTINUATION PHASE ===")
+        
+        successful_continuations = 0
+        attempts = 0
+        
+        while successful_continuations < continuation_count and attempts < max_continuation_attempts:
+            attempts += 1
+            print(f"\n--- Continuation attempt {attempts} (targeting {successful_continuations + 1} of {continuation_count}) ---")
+            
+            try:
+                # Generate continuation article
+                continuation_article = continue_existing_story()
+                
+                if continuation_article:
+                    generated_articles.append(continuation_article)
+                    successful_continuations += 1
+                    print(f"Successfully generated continuation {successful_continuations} of {continuation_count}")
+                    
+                    # Add a small delay between continuations
+                    if successful_continuations < continuation_count:
+                        time.sleep(2)
+                else:
+                    print("No eligible stories found for continuation")
+                    # If no stories are available, break early
+                    break
+                    
+            except Exception as e:
+                print(f"Error generating continuation {attempts}: {e}")
+        
+        print(f"\n=== Story Continuation Summary ===")
+        print(f"Successfully generated {successful_continuations} of {continuation_count} continuations")
+        print(f"Total attempts: {attempts}")
+        
+        # Adjust the new article count based on successful continuations
+        if successful_continuations < continuation_count:
+            shortage = continuation_count - successful_continuations
+            print(f"Shortage of {shortage} continuations - will generate {shortage} additional new articles")
+            article_count += shortage
+
+    # Generate new articles
+    print(f"\n=== NEW ARTICLE GENERATION PHASE ===")
+    new_articles_generated = 0
+    
     for i in range(article_count):
-        print(f"\n=== Generating article {i+1} of {article_count} ===")
+        print(f"\n--- Generating new article {i+1} of {article_count} ---")
         try:
             # Generate article
             article = create_new_story()
             generated_articles.append(article)
+            new_articles_generated += 1
             
             # Add a small delay between articles to avoid rate limiting issues
             if i < article_count - 1:
                 time.sleep(1)
                 
         except Exception as e:
-            print(f"Error generating article {i+1}: {e}")
+            print(f"Error generating new article {i+1}: {e}")
 
-    print(f"\n=== Article Generation Summary ===")
-    print(f"Successfully generated {len(generated_articles)} of {article_count} articles")
+    print(f"\n=== FINAL GENERATION SUMMARY ===")
+    print(f"Story continuations: {successful_continuations if continuation_count > 0 else 0}")
+    print(f"New articles: {new_articles_generated}")
+    print(f"Total articles generated: {len(generated_articles)}")
+    print(f"Target total: {continuation_count + article_count}")
 
     # Prune old articles if limit is set
     if article_limit > 0:
