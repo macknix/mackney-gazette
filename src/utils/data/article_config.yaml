@@ -1,0 +1,167 @@
+categories:
+  - Politics
+  - Sports
+  - Business
+  - Technology
+  - Health
+  - Education
+  - Entertainment
+  - Environment
+  - Crime
+  - Local News
+
+# Prompt templates for article generation
+prompts:
+  # System prompt template for the LLM
+  system_prompt: |
+    You are a skilled news journalist for the Mackney Gazette newspaper. 
+    You write in the style of {author_name}, who is described as:
+    "{author_persona}"
+    Your writing style is: {author_style}
+    
+    You are writing an article in the category: {category}
+    The tone should be {tone_description}.
+    
+    Create a realistic newspaper article with a compelling headline, detailed body, and brief summary.
+  
+  # User prompt template for the LLM
+  user_prompt: |
+    Please write a newspaper article for the {category} section of the Mackney Gazette.
+    
+    {town_context}
+    
+    {people_context}
+    
+    Format your response in the following JSON structure:
+    ```json
+    {{
+      "title": "A catchy headline for your article",
+      "body": "The full article text with all paragraphs...",
+      "summary": "A brief 1-2 sentence summary of the article",
+      "story_status": "ongoing or concluded",
+      "images": [
+        {{
+          "image": "search query that could be used to find image 1",
+          "caption": "Descriptive caption for image 1"
+        }},
+        {{
+          "image": "search query that could be used to find image 2",
+          "caption": "Descriptive caption for image 2"
+        }}
+      ]
+    }}
+    ```
+    
+    For the "story_status" field, specify whether the news story is "ongoing" (the situation is still developing, requires follow-up reporting) or "concluded" (the story is complete, no follow-up needed). This helps our editorial team plan content.
+    
+    Provide 2-3 relevant images in the images array, ensuring each has both an image search query and descriptive caption.
+    
+  
+  # Tone descriptions for different seriousness levels
+  tone_descriptions:
+    very_lighthearted: "with a very humorous and playful tone, incorporating wit and levity"
+    lighthearted: "with a casual, upbeat tone that incorporates some humor where appropriate"
+    balanced: "with a balanced tone that is neither too serious nor too lighthearted"
+    serious: "with a formal, factual, and professional tone"
+    very_serious: "with a grave and solemn tone appropriate for serious issues"
+
+# Define article seed configuration for sampling data
+article_seed:
+  # Article tone configuration
+  tone:
+    # Seriousness levels with their probabilities
+    # This determines how serious or lighthearted the article will be
+    seriousness:
+      "very_lighthearted": 0.1    # Very humorous, playful tone
+      "lighthearted": 0.2         # Casual, upbeat with some humor
+      "balanced": 0.4             # Neutral, balanced reporting
+      "serious": 0.2              # Formal, factual, professional tone
+      "very_serious": 0.1         # Grave, solemn, addressing serious issues
+    
+  # Town data sampling configuration
+  town_data:
+    # How frequently to include town data in articles
+    inclusion_probability: 0.75
+    # Weights and max counts for different town features to include
+    feature_weights:
+      streets: 
+        probability: 0.9
+        max_count: 1
+      landmarks: 
+        probability: 0.2
+        max_count: 1
+      businesses: 
+        probability: 0.7
+        max_count: 1
+
+  # People data sampling configuration
+  people_data:
+    # How frequently to include people data in articles
+    inclusion_probability: 0.85
+    # Minimum and maximum number of people to include per article
+    min_people_per_article: 1
+    max_people_per_article: 3
+    # Weights for different demographic groups
+    demographic_weights:
+      age:
+        "18-30": 0.2
+        "31-50": 0.4
+        "51-70": 0.3
+        "71+": 0.1
+      occupation_categories:
+        "business": 0.3
+        "healthcare": 0.2
+        "education": 0.15
+        "service": 0.2
+        "other": 0.15
+
+authors:
+  - name: Sarah Johnson
+    persona: "Senior political correspondent with 15 years of experience covering Washington. Known for incisive analysis and deep source network."
+    specialties: ["Politics", "Government", "Elections"]
+    writing_style: "Analytical and authoritative"
+    
+  - name: Michael Chen
+    persona: "Tech reporter who previously worked in Silicon Valley. Specializes in consumer electronics and startup culture."
+    specialties: ["Technology", "Business", "Innovation"]
+    writing_style: "Technical but accessible"
+    
+  - name: Jessica Rodriguez
+    persona: "Award-winning investigative journalist focused on social justice issues and community reporting."
+    specialties: ["Crime", "Local News", "Human Interest"]
+    writing_style: "Detailed and empathetic"
+    
+  - name: David Thompson
+    persona: "Former athlete turned sports writer with insider connections to major leagues."
+    specialties: ["Sports", "Athletics", "Recreation"]
+    writing_style: "Conversational and colorful"
+    
+  - name: Emily Wilson
+    persona: "Health and wellness reporter with medical background. Focuses on making complex health topics understandable."
+    specialties: ["Health", "Science", "Medicine"]
+    writing_style: "Clear and informative"
+    
+  - name: Robert Martinez
+    persona: "Business and finance expert who worked on Wall Street for a decade before turning to journalism."
+    specialties: ["Business", "Finance", "Economy"]
+    writing_style: "Concise and data-driven"
+    
+  - name: Amanda Lee
+    persona: "Arts and culture critic with a flair for spotting emerging trends and talents."
+    specialties: ["Entertainment", "Culture", "Arts"]
+    writing_style: "Creative and opinionated"
+    
+  - name: Daniel Smith
+    persona: "Environmental journalist who has covered climate issues on all seven continents."
+    specialties: ["Environment", "Climate", "Sustainability"]
+    writing_style: "Passionate and scientifically accurate"
+    
+  - name: Lisa Brown
+    persona: "Education reporter with background in teaching. Focuses on policy and innovation in education."
+    specialties: ["Education", "Youth", "Policy"]
+    writing_style: "Thoughtful and approachable"
+    
+  - name: James Wilson
+    persona: "General assignment reporter known for versatility and quick turnaround on breaking news."
+    specialties: ["Local News", "Politics", "Crime"]
+    writing_style: "Straightforward and efficient"

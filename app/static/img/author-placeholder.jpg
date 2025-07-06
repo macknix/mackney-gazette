@@ -1,0 +1,6 @@
+<!-- author placeholder image, base64 encoded -->
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#e0e0e0"/>
+  <circle cx="100" cy="80" r="50" fill="#bbb"/>
+  <circle cx="100" cy="230" r="100" fill="#bbb"/>
+</svg>

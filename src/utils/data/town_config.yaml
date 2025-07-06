@@ -1,0 +1,195 @@
+# Town Generator Configuration
+# Contains all static data for town generation
+
+# Town size categories and their characteristics
+town_sizes:
+  small:
+    population_range: [1000, 5000]
+    street_count_range: [15, 40]
+    business_count_range: [8, 25]
+    landmark_count_range: [3, 8]
+    park_count_range: [2, 5]
+    school_count_range: [1, 3]
+    service_count_range: [5, 15]
+  
+  medium:
+    population_range: [5000, 25000]
+    street_count_range: [40, 120]
+    business_count_range: [25, 80]
+    landmark_count_range: [8, 20]
+    park_count_range: [5, 15]
+    school_count_range: [3, 8]
+    service_count_range: [15, 40]
+  
+  large:
+    population_range: [25000, 100000]
+    street_count_range: [120, 300]
+    business_count_range: [80, 200]
+    landmark_count_range: [20, 50]
+    park_count_range: [15, 35]
+    school_count_range: [8, 20]
+    service_count_range: [40, 100]
+
+# Street name patterns by locale
+street_patterns:
+  en_US: ["Street", "Avenue", "Boulevard", "Drive", "Lane", "Road", "Circle", "Court", "Way", "Place"]
+  en_GB: ["Road", "Street", "Lane", "Avenue", "Close", "Gardens", "Crescent", "Square", "Terrace", "Grove"]
+  en_CA: ["Street", "Avenue", "Drive", "Road", "Boulevard", "Lane", "Circle", "Crescent", "Way", "Trail"]
+  fr_FR: ["Rue", "Avenue", "Boulevard", "Place", "Impasse", "Allée", "Cours", "Quai", "Passage", "Square"]
+  de_DE: ["Straße", "Gasse", "Weg", "Platz", "Allee", "Ring", "Damm", "Steig", "Pfad", "Hof"]
+  es_ES: ["Calle", "Avenida", "Plaza", "Paseo", "Ronda", "Travesía", "Camino", "Callejón", "Glorieta", "Alameda"]
+  it_IT: ["Via", "Viale", "Piazza", "Corso", "Strada", "Vicolo", "Largo", "Piazzale", "Passaggio", "Borgo"]
+  pt_BR: ["Rua", "Avenida", "Praça", "Alameda", "Travessa", "Largo", "Estrada", "Rodovia", "Passagem", "Beco"]
+
+# Business types with weights (weighted by likelihood)
+business_types:
+  "Restaurant/Café": 0.15
+  "Retail Store": 0.12
+  "Gas Station": 0.08
+  "Grocery Store": 0.08
+  "Bank": 0.06
+  "Pharmacy": 0.06
+  "Hair Salon/Barber": 0.05
+  "Auto Repair": 0.05
+  "Real Estate": 0.04
+  "Insurance": 0.04
+  "Medical Office": 0.04
+  "Dental Office": 0.03
+  "Law Office": 0.03
+  "Accounting": 0.03
+  "Fitness Center": 0.03
+  "Pet Store": 0.02
+  "Hardware Store": 0.02
+  "Clothing Store": 0.02
+  "Electronics Store": 0.02
+  "Florist": 0.02
+  "Bakery": 0.02
+  "Other": 0.05
+
+# Landmark types
+landmark_types:
+  - "Historic Building"
+  - "Monument"
+  - "Statue"
+  - "Fountain"
+  - "Clock Tower"
+  - "Old Church"
+  - "Historic House"
+  - "Memorial"
+  - "Historic Bridge"
+  - "Gazebo"
+  - "Town Hall"
+  - "Library"
+  - "Museum"
+  - "Community Center"
+  - "Fire Station"
+  - "Police Station"
+  - "Post Office"
+  - "Courthouse"
+  - "Hospital"
+  - "Cemetery"
+
+# Park types and features
+park_types:
+  - "Community Park"
+  - "Neighborhood Park"
+  - "Pocket Park"
+  - "Linear Park"
+  - "Sports Complex"
+  - "Nature Preserve"
+  - "Botanical Garden"
+  - "Playground"
+  - "Dog Park"
+  - "Skate Park"
+  - "Basketball Court"
+  - "Tennis Court"
+  - "Baseball Field"
+  - "Soccer Field"
+  - "Walking Trail"
+  - "Picnic Area"
+
+# School types
+school_types:
+  - "Elementary School"
+  - "Middle School"
+  - "High School"
+  - "Preschool"
+  - "Private School"
+  - "Charter School"
+  - "Vocational School"
+  - "Community College"
+
+# Public services
+service_types:
+  - "Fire Station"
+  - "Police Station"
+  - "Post Office"
+  - "DMV Office"
+  - "Social Services"
+  - "Public Works"
+  - "Water Department"
+  - "Electric Utility"
+  - "Waste Management"
+  - "Public Transit"
+  - "Senior Center"
+  - "Food Bank"
+  - "Emergency Services"
+  - "Public Health Office"
+  - "Code Enforcement"
+
+# Locale-specific country name mapping
+country_mapping:
+  en_US: "United States"
+  en_GB: "United Kingdom"
+  en_CA: "Canada"
+  fr_FR: "France"
+  de_DE: "Germany"
+  es_ES: "Spain"
+  it_IT: "Italy"
+  pt_BR: "Brazil"
+  nl_NL: "Netherlands"
+  sv_SE: "Sweden"
+  no_NO: "Norway"
+  da_DK: "Denmark"
+  fi_FI: "Finland"
+  pl_PL: "Poland"
+  cs_CZ: "Czech Republic"
+  hu_HU: "Hungary"
+  ru_RU: "Russia"
+  ja_JP: "Japan"
+  ko_KR: "South Korea"
+  zh_CN: "China"
+  hi_IN: "India"
+  ar_SA: "Saudi Arabia"
+  fa_IR: "Iran"
+  tr_TR: "Turkey"
+  he_IL: "Israel"
+  th_TH: "Thailand"
+  en_AU: "Australia"
+  en_NZ: "New Zealand"
+
+# Additional data for name generation
+name_components:
+  tree_names: ["Oak", "Pine", "Maple", "Cedar", "Elm", "Birch", "Willow", "Rose", "Lily", "Daisy"]
+  street_prefixes: ["Main", "Church", "School", "Park", "Mill", "Hill", "River", "Lake", "Forest", "Garden"]
+  directional_prefixes: ["North", "South", "East", "West"]
+  ordinal_prefixes: ["First", "Second", "Third", "Fourth", "Fifth"]
+  
+  business_name_adjectives:
+    descriptive: ["Golden", "Silver", "Blue", "Red", "Green", "Quality", "Professional", "Expert", "Reliable"]
+    location_based: ["Corner", "Main", "Family", "Village", "Highway"]
+    size_based: ["Little", "Big", "Old", "New"]
+    speed_based: ["Quick", "Fast", "Speed", "Express"]
+  
+  business_name_nouns:
+    restaurant: ["Spoon", "Fork", "Plate", "Table", "Kitchen", "Grill", "Diner", "Café", "Bistro"]
+    retail: ["Shop", "Store", "Emporium", "Market"]
+    gas: ["Fill", "Stop", "Go", "Fuel", "Gas", "Station"]
+  
+  park_prefixes: ["Sunset", "Sunrise", "Riverside", "Hillside", "Lakeside", "Meadow", "Valley", "Memorial"]
+  
+  climate_types: ["Temperate", "Continental", "Mediterranean", "Oceanic", "Humid Subtropical"]
+  
+  facility_types: ["Playground", "Walking Trails", "Sports Fields", "Picnic Areas", "Restrooms", "Parking"]
+  
+  historical_significance_levels: ["High", "Medium", "Low"]

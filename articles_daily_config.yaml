@@ -1,0 +1,32 @@
+# Daily Article Generation Configuration
+# This file controls the parameters for daily article generation
+
+# Article generation parameters
+articles:
+  # Number of articles to generate per day
+  count: 10
+  
+  # Article types/categories to prioritize (empty list = use all configured categories)
+  # These categories must match those defined in article_config.yaml
+  priority_categories: []
+  
+  # Distribution of article seriousness (values should sum to 1.0)
+  seriousness_weights:
+    serious: 0.3
+    balanced: 0.5
+    light: 0.2
+
+  # Distribution of article story status (values should sum to 1.0)
+  story_status_weights:
+    breaking: 0.15
+    ongoing: 0.55
+    follow_up: 0.3
+
+  # Options for saving articles
+  save_options:
+    # Whether to back up the articles CSV file before adding new articles
+    backup_before_save: true
+    
+    # Maximum number of articles to keep in the CSV (0 = unlimited)
+    # Older articles will be removed when this limit is reached
+    article_limit: 100

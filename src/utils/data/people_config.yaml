@@ -1,0 +1,197 @@
+# People Generator Configuration
+# Contains all static data for people generation
+
+# Age range constants
+age_ranges:
+  min_age: 18
+  max_age: 99
+  working_age_start: 25
+  working_age_end: 65
+  retirement_age: 65
+  
+# Income range constants
+income_ranges:
+  min_income: 0
+  unemployed_max_income: 15000
+  retired_min_income: 20000
+  retired_max_income: 60000
+  part_time_min_income: 15000
+  part_time_max_income: 40000
+  
+# Age multipliers for income
+income_age_multipliers:
+  peak_earning_age_start: 30
+  peak_earning_age_end: 55
+  peak_earning_multiplier: 1.2
+  normal_earning_multiplier: 1.0
+  reduced_earning_multiplier: 0.8
+  
+# Education levels (universal across locales)
+education_levels:
+  - "Less than high school"
+  - "High school diploma/GED"
+  - "Some college, no degree"
+  - "Associate degree"
+  - "Bachelor's degree"
+  - "Master's degree"
+  - "Professional degree"
+  - "Doctoral degree"
+  
+# Employment status types (universal across locales)
+employment_status:
+  - "Employed full-time"
+  - "Employed part-time" 
+  - "Unemployed"
+  - "Retired"
+  - "Student"
+  - "Homemaker"
+  - "Disabled"
+  - "Self-employed"
+  
+# Marital status types (universal across locales)
+marital_status:
+  - "Single"
+  - "Married" 
+  - "Divorced"
+  - "Widowed"
+  - "Separated"
+  - "Domestic partnership"
+  
+# Temperament types with descriptions and traits
+temperaments:
+  - type: "Optimistic"
+    description: "Generally positive outlook, sees the good in situations"
+    traits: ["positive", "hopeful", "cheerful"]
+  - type: "Pessimistic"
+    description: "Tends to focus on negative aspects, expects the worst"
+    traits: ["negative", "doubtful", "cynical"]
+  - type: "Calm"
+    description: "Even-tempered, rarely shows strong emotions"
+    traits: ["peaceful", "composed", "steady"]
+  - type: "Anxious"
+    description: "Prone to worry and nervousness"
+    traits: ["worried", "nervous", "apprehensive"]
+  - type: "Outgoing"
+    description: "Social, enjoys being around people"
+    traits: ["social", "extroverted", "friendly"]
+  - type: "Reserved"
+    description: "Quiet, prefers solitude or small groups"
+    traits: ["introverted", "quiet", "private"]
+  - type: "Aggressive"
+    description: "Quick to anger, confrontational"
+    traits: ["assertive", "forceful", "competitive"]
+  - type: "Patient"
+    description: "Tolerant, slow to anger"
+    traits: ["tolerant", "understanding", "gentle"]
+  - type: "Ambitious"
+    description: "Driven, goal-oriented"
+    traits: ["motivated", "determined", "focused"]
+  - type: "Laid-back"
+    description: "Relaxed, goes with the flow"
+    traits: ["relaxed", "easygoing", "flexible"]
+  - type: "Analytical"
+    description: "Logical, thinks things through carefully"
+    traits: ["logical", "methodical", "rational"]
+  - type: "Impulsive"
+    description: "Acts on instinct, makes quick decisions"
+    traits: ["spontaneous", "instinctive", "reactive"]
+  
+# Country name mappings by locale
+country_mapping:
+  en_US: "United States"
+  en_GB: "United Kingdom"
+  en_CA: "Canada"
+  fr_FR: "France"
+  de_DE: "Germany"
+  es_ES: "Spain"
+  it_IT: "Italy"
+  pt_BR: "Brazil"
+  ja_JP: "Japan"
+  ko_KR: "South Korea"
+  zh_CN: "China"
+  ru_RU: "Russia"
+  ar_SA: "Saudi Arabia"
+  hi_IN: "India"
+  nl_NL: "Netherlands"
+  sv_SE: "Sweden"
+  no_NO: "Norway"
+  da_DK: "Denmark"
+  fi_FI: "Finland"
+  pl_PL: "Poland"
+  
+# Available locales
+available_locales:
+  - "en_US"  # United States
+  - "en_GB"  # United Kingdom
+  - "en_CA"  # Canada
+  - "fr_FR"  # France
+  - "de_DE"  # Germany
+  - "es_ES"  # Spain
+  - "it_IT"  # Italy
+  - "pt_BR"  # Brazil
+  - "ja_JP"  # Japan
+  - "ko_KR"  # South Korea
+  - "zh_CN"  # China
+  - "ru_RU"  # Russia
+  - "ar_SA"  # Saudi Arabia
+  - "hi_IN"  # India
+  - "nl_NL"  # Netherlands
+  - "sv_SE"  # Sweden
+  - "no_NO"  # Norway
+  - "da_DK"  # Denmark
+  - "fi_FI"  # Finland
+  - "pl_PL"  # Poland
+  
+# Temperament weight adjustments
+temperament_weight_adjustments:
+  age_based:
+    Anxious:
+      "<30": 0.5
+      ">60": -0.2
+      "default": 0
+    Calm:
+      ">50": 0.3
+      "<25": -0.1
+      "default": 0
+    Outgoing:
+      "25-45": 0.3
+      ">65": -0.2
+      "default": 0
+    Patient:
+      ">40": 0.4
+      "<25": -0.2
+      "default": 0
+    Impulsive:
+      "<30": 0.4
+      ">50": -0.3
+      "default": 0
+    Ambitious:
+      "25-45": 0.4
+      ">60": -0.2
+      "default": 0
+  
+  education_based:
+    Analytical:
+      has_degree: 0.3
+      advanced_degree: 0.2
+    Optimistic:
+      bachelor_or_masters: 0.2
+  
+  employment_based:
+    Anxious:
+      Unemployed: 0.5
+      Student: 0.2
+    Aggressive:
+      management_sales_law: 0.2
+    Laid-back:
+      Retired: 0.4
+    Pessimistic:
+      unemployment_disability: 0.3
+
+# Default parameters for data generation
+generation_defaults:
+  num_people: 1000
+  output_dir: "data"
+  filename: "people_data.csv"
+  locale: "en_GB"
+  seed: 42

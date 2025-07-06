@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Mackney Gazette{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Article Header -->
+        <div class="article-header mb-4">
+            <div class="category-tag mb-2">
+                <a href="{{ url_for('category', category_name=article.category) }}" class="badge bg-primary">{{ article.category }}</a>
+                <span class="story-status ms-2 badge {% if article.story_status == 'Ongoing' %}bg-warning{% else %}bg-success{% endif %}">
+                    {{ article.story_status }}
+                </span>
+            </div>
+            <h1 class="article-title mb-3">{{ article.title }}</h1>
+            <div class="article-meta mb-3">
+                <span class="article-author">By <strong>{{ article.author }}</strong></span>
+                <span class="article-date ms-3">{{ article.publication_date|format_date }}</span>
+                {% if article.last_updated %}
+                <span class="article-updated ms-3">Last updated: {{ article.last_updated }}</span>
+                {% endif %}
+            </div>
+            <div class="article-summary mb-4">
+                <p class="lead">{{ article.summary }}</p>
+            </div>
+        </div>
+        
+        <!-- Article Featured Image -->
+        {% if article.images and article.images|length > 0 %}
+        <div class="article-featured-image mb-4">
+            <img src="{{ article.images[0].url }}" class="img-fluid" alt="{{ article.images[0].alt_text }}">
+            <div class="image-caption mt-2">
+                <span>{{ article.images[0].caption }}</span>
+                <span class="image-credit">{{ article.images[0].credit }}</span>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Article Content -->
+        <div class="article-content mb-4">
+            {{ article.body|safe }}
+        </div>
+        
+        <!-- Additional Images -->
+        {% if article.images and article.images|length > 1 %}
+        <div class="article-gallery mb-4">
+            <h3 class="gallery-title mb-3">Gallery</h3>
+            <div class="row g-3">
+                {% for image in article.images[1:] %}
+                <div class="col-md-6">
+                    <div class="gallery-item">
+                        <img src="{{ image.url }}" class="img-fluid" alt="{{ image.alt_text }}">
+                        <div class="image-caption mt-2">
+                            <span>{{ image.caption }}</span>
+                            <span class="image-credit">{{ image.credit }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Article Footer -->
+        <div class="article-footer mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="article-tags">
+                        <span class="fw-bold">Category:</span>
+                        <a href="{{ url_for('category', category_name=article.category) }}" class="ms-2">{{ article.category }}</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="article-share">
+                        <span class="fw-bold">Share:</span>
+                        <a href="#" class="ms-2" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="ms-2" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="ms-2" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="ms-2" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Author Bio -->
+        <div class="author-bio bg-light p-4 mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-2 text-center">
+                    <div class="author-avatar mb-2">
+                        <img src="{{ url_for('static', filename='img/author-placeholder.jpg') }}" class="rounded-circle img-fluid" alt="Author Avatar">
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <h4 class="author-name mb-2">{{ article.author }}</h4>
+                    <p class="author-description mb-2">{{ article.author_persona }}</p>
+                    <p class="author-style mb-0"><em>Writing style: {{ article.author_style }}</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+        <!-- Related Articles -->
+        <div class="related-articles mb-4">
+            <h3 class="sidebar-title mb-3">Related Articles</h3>
+            {% if related_articles %}
+                {% for related in related_articles %}
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            {% if related.images and related.images|length > 0 %}
+                                <img src="{{ related.images[0].url }}" class="img-fluid h-100" alt="{{ related.images[0].alt_text }}" style="object-fit: cover;">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='img/placeholder.jpg') }}" class="img-fluid h-100" alt="Placeholder image" style="object-fit: cover;">
+                            {% endif %}
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body py-2">
+                                <h5 class="card-title small"><a href="{{ url_for('article', article_id=related.article_id) }}">{{ related.title }}</a></h5>
+                                <div class="card-text small text-muted">{{ related.publication_date|format_date }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">No related articles available.</div>
+            {% endif %}
+        </div>
+        
+        <!-- Ad Space -->
+        <div class="sidebar-ad mb-4">
+            <div class="ad-placeholder p-5 text-center bg-light">
+                <span>Advertisement</span>
+            </div>
+        </div>
+        
+        <!-- Newsletter Signup -->
+        <div class="newsletter-signup bg-light p-4 mb-4">
+            <h3 class="sidebar-title mb-3">Newsletter</h3>
+            <p>Stay updated with the latest news</p>
+            <form>
+                <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Your email address">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

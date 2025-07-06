@@ -1,0 +1,5 @@
+credentials
+data/*
+mackney-gazette-venv
+.env
+venv

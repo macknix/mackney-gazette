@@ -1,0 +1,24 @@
+# Town Initialization Configuration
+# This file controls the initial setup parameters for the town and newspaper
+
+# Town parameters
+town:
+  name: "Mackney"  # Default town name
+  size: "medium"   # Town size: small, medium, or large
+  locale: "en_GB"  # Locale for content generation (en_US, en_GB, etc.)
+  seed: 69         # Random seed for reproducibility
+  
+# Newspaper parameters  
+newspaper:
+  name: "Mackney Gazette"  # Default newspaper name
+  tagline: "Your Community, Your News"  # Newspaper tagline
+  founded_year: 1883  # Year the newspaper was founded
+  publication_frequency: "daily"  # Options: daily, weekly, bi-weekly, monthly
+
+# Population generation parameters
+population:
+  # Scale factor for population (percentage of town population to generate)
+  # 1.0 = generate exactly as many people as the town population
+  # Lower values will generate fewer people to improve performance
+  scale_factor: 0.1  
+  min_people: 50  # Minimum number of people to generate even for small towns
