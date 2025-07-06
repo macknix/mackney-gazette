@@ -6,6 +6,17 @@ articles:
   # Number of articles to generate per day
   count: 10
   
+  # Story continuation parameters
+  story_continuation:
+    # Number of story continuations to generate per day
+    count: 2
+    
+    # Whether to generate continuations before new stories
+    generate_first: true
+    
+    # Maximum number of attempts to find eligible stories to continue
+    max_attempts: 5
+  
   # Article types/categories to prioritize (empty list = use all configured categories)
   # These categories must match those defined in article_config.yaml
   priority_categories: []
