@@ -3,15 +3,58 @@
 {% block title %}{{ article.title }} - Mackney Gazette{% endblock %}
 
 {% block content %}
+<!-- Story Chain Breadcrumb -->
+{% if article.story_total and article.story_total > 1 %}
+<div class="story-breadcrumb mb-4">
+    <div class="container">
+        <nav aria-label="Story chain navigation">
+            <ol class="breadcrumb bg-light p-3 mb-0">
+                <li class="breadcrumb-item">
+                    <i class="fas fa-book-open"></i> Story Chain:
+                </li>
+                {% for related_item in story_related %}
+                {% if related_item.position < article.story_position %}
+                <li class="breadcrumb-item">
+                    <a href="{{ url_for('article', article_id=related_item.article.article_id) }}">
+                        Part {{ related_item.position }}
+                    </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                <li class="breadcrumb-item active" aria-current="page">
+                    <strong>Part {{ article.story_position }}</strong>
+                </li>
+                {% for related_item in story_related %}
+                {% if related_item.position > article.story_position %}
+                <li class="breadcrumb-item">
+                    <a href="{{ url_for('article', article_id=related_item.article.article_id) }}">
+                        Part {{ related_item.position }}
+                    </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
+    </div>
+</div>
+{% endif %}
+
 <div class="row">
     <div class="col-lg-8">
         <!-- Article Header -->
         <div class="article-header mb-4">
             <div class="category-tag mb-2">
                 <a href="{{ url_for('category', category_name=article.category) }}" class="badge bg-primary">{{ article.category }}</a>
-                <span class="story-status ms-2 badge {% if article.story_status == 'Ongoing' %}bg-warning{% else %}bg-success{% endif %}">
-                    {{ article.story_status }}
+                {% if article.parent_article_id %}
+                <span class="story-chain-indicator ms-2 badge bg-info">
+                    <i class="fas fa-link"></i> Follow-up Story
                 </span>
+                {% endif %}
+                {% if article.story_total and article.story_total > 1 %}
+                <span class="story-position ms-2 badge bg-secondary">
+                    <i class="fas fa-list-ol"></i> {{ article.story_position }}/{{ article.story_total }}
+                </span>
+                {% endif %}
             </div>
             <h1 class="article-title mb-3">{{ article.title }}</h1>
             <div class="article-meta mb-3">
@@ -102,11 +145,50 @@
     
     <!-- Sidebar -->
     <div class="col-lg-4">
+        <!-- Story Chain Articles -->
+        {% if story_related %}
+        <div class="story-chain-articles mb-4">
+            <h3 class="sidebar-title mb-3">
+                <i class="fas fa-link"></i> Story Chain
+                {% if article.story_total and article.story_total > 1 %}
+                <small class="text-muted">({{ article.story_total }} articles)</small>
+                {% endif %}
+            </h3>
+            {% for related_item in story_related %}
+            <div class="card mb-3 border-warning">
+                <div class="card-header bg-warning text-dark py-2">
+                    <small class="fw-bold">
+                        {{ related_item.relationship }}
+                        {% if related_item.position %}
+                        <span class="float-end">{{ related_item.position }}/{{ related_item.total }}</span>
+                        {% endif %}
+                    </small>
+                </div>
+                <div class="row g-0">
+                    <div class="col-4">
+                        {% if related_item.article.images and related_item.article.images|length > 0 %}
+                            <img src="{{ related_item.article.images[0].url }}" class="img-fluid h-100" alt="{{ related_item.article.images[0].alt_text }}" style="object-fit: cover;">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='img/placeholder.jpg') }}" class="img-fluid h-100" alt="Placeholder image" style="object-fit: cover;">
+                        {% endif %}
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body py-2">
+                            <h5 class="card-title small"><a href="{{ url_for('article', article_id=related_item.article.article_id) }}">{{ related_item.article.title }}</a></h5>
+                            <div class="card-text small text-muted">{{ related_item.article.publication_date|format_date }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
         <!-- Related Articles -->
         <div class="related-articles mb-4">
             <h3 class="sidebar-title mb-3">Related Articles</h3>
-            {% if related_articles %}
-                {% for related in related_articles %}
+            {% if category_related %}
+                {% for related in category_related %}
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-4">
