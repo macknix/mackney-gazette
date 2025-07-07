@@ -45,13 +45,6 @@
         <div class="article-header mb-4">
             <div class="category-tag mb-2">
                 <a href="{{ url_for('category', category_name=article.category) }}" class="badge bg-primary">{{ article.category }}</a>
-                {% if article.parent_article_id %}
-                <a href="{{ url_for('article', article_id=article.parent_article_id) }}" 
-                   class="story-chain-indicator ms-2 badge bg-info text-decoration-none" 
-                   title="Click to view the original story">
-                    <i class="fas fa-link"></i> Follow-up Story
-                </a>
-                {% endif %}
                 {% if article.story_total and article.story_total > 1 %}
                 <span class="story-position ms-2 badge bg-secondary" 
                       title="This is part {{ article.story_position }} of {{ article.story_total }} in this story series">
