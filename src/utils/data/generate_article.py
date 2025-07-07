@@ -445,7 +445,7 @@ def create_new_story():
         'summary': content['summary'],
         'images': images_json,  # Add the images as a JSON string
         'publication_date': datetime.datetime.now().strftime('%Y-%m-%d'),
-        'last_updated': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'last_updated': datetime.datetime.now().strftime('%Y-%m-%d'),
         'author': author_name,
         'author_persona': author_persona,
         'author_style': author_style,
@@ -861,7 +861,7 @@ def continue_existing_story():
         'summary': content['summary'],
         'images': images_json,
         'publication_date': datetime.datetime.now().strftime('%Y-%m-%d'),
-        'last_updated': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'last_updated': datetime.datetime.now().strftime('%Y-%m-%d'),
         'author': author_info['name'],
         'author_persona': author_info['persona'],
         'author_style': author_info['writing_style'],
