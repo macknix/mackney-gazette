@@ -463,8 +463,7 @@ def create_new_story():
         'parent_article_id': None,  # No parent article for new articles
     }
     
-    # Define the path to the CSV file in the data directory
-    csv_file = Path(current_dir).parent.parent.parent / 'data' / 'articles.csv'
+    csv_file = data_dir / 'articles.csv'
     
     # Check if the file exists
     file_exists = csv_file.is_file()
