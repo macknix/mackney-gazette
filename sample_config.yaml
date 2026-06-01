@@ -1,0 +1,17 @@
+articles:
+  count: 1
+  story_continuation:
+    count: 0
+    max_attempts: 0
+  priority_categories: []
+  seriousness_weights:
+    serious: 0.3
+    balanced: 0.5
+    light: 0.2
+  story_status_weights:
+    breaking: 0.15
+    ongoing: 0.55
+    follow_up: 0.3
+  save_options:
+    backup_before_save: false
+    article_limit: 0
