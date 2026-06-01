@@ -12,7 +12,19 @@ import time
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 
+from json_repair import repair_json
 from src.utils.llm.openai import call_openai_api
+
+
+def _parse_json_response(text: str) -> dict:
+    """Parse JSON from LLM output, tolerating markdown fences and minor formatting errors."""
+    text = text.strip()
+    if text.startswith("```"):
+        text = text.split("```", 2)[1]
+        if text.startswith("json"):
+            text = text[4:]
+        text = text.rsplit("```", 1)[0].strip()
+    return json.loads(repair_json(text))
 
 def load_config(config_file):
     """
@@ -158,9 +170,9 @@ def generate_article_content(
     
     # Set model parameters for article generation
     model_args = {
-        'model': 'gemini/gemini-2.0-flash',
+        'model': os.environ.get('LITELLM_MODEL', 'gemini/gemini-2.5-flash'),
         'temperature': 0.8,
-        'max_tokens': 2000,
+        'max_tokens': 4000,
         'response_format': {'type': 'json_object'}
     }
     
@@ -168,9 +180,7 @@ def generate_article_content(
         # Call the OpenAI API
         response_text = call_openai_api(system_prompt, messages, model_args)
         
-        # Parse the JSON response
-        import json
-        response_data = json.loads(response_text)
+        response_data = _parse_json_response(response_text)
         
         # Extract the article content
         title = response_data.get('title', f"Article about {category}")
@@ -1007,9 +1017,9 @@ def generate_continuation_article_content(
     
     # Set model parameters for article generation
     model_args = {
-        'model': 'gemini/gemini-2.0-flash',
+        'model': os.environ.get('LITELLM_MODEL', 'gemini/gemini-2.5-flash'),
         'temperature': 0.8,
-        'max_tokens': 2000,
+        'max_tokens': 4000,
         'response_format': {'type': 'json_object'}
     }
     
@@ -1018,7 +1028,7 @@ def generate_continuation_article_content(
         response_text = call_openai_api(system_prompt, messages, model_args)
         
         # Parse the JSON response
-        response_data = json.loads(response_text)
+        response_data = _parse_json_response(response_text)
         
         # Extract the article content
         title = response_data.get('title', f"Follow-up: {original_story['title']}")

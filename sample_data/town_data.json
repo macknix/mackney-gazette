@@ -1,0 +1,1163 @@
+{
+  "id": "be550d8d-328e-4a80-a75e-6a9c0691c4a2",
+  "name": "Mackney",
+  "country": "United Kingdom",
+  "locale": "en_GB",
+  "size_category": "medium",
+  "population": 6222,
+  "area_sq_km": 20.6,
+  "founded_year": 1755,
+  "elevation_m": 671,
+  "climate": "Temperate",
+  "streets": [
+    {
+      "id": "a1e5db3c-07e2-4242-8700-eef75eccaa6d",
+      "name": "Lydia Street",
+      "type": "Mixed",
+      "length_km": 0.95
+    },
+    {
+      "id": "00e1d2e8-48ed-4598-9d50-8bf5a8b157b4",
+      "name": "West Square",
+      "type": "Industrial",
+      "length_km": 1.5
+    },
+    {
+      "id": "bdfee42b-5d14-4dad-8a2c-a9256d24becd",
+      "name": "East Terrace",
+      "type": "Industrial",
+      "length_km": 0.53
+    },
+    {
+      "id": "3892dc55-337c-411c-9883-6a22a1da7b1a",
+      "name": "Church Crescent",
+      "type": "Mixed",
+      "length_km": 0.54
+    },
+    {
+      "id": "c8ab9cfe-c0aa-4bf2-9f1b-317e42d05a18",
+      "name": "Ian Close",
+      "type": "Commercial",
+      "length_km": 1.8
+    },
+    {
+      "id": "c89b74ba-fa06-47d2-b5f2-4576444d43a5",
+      "name": "Fifth Avenue",
+      "type": "Residential",
+      "length_km": 0.43
+    },
+    {
+      "id": "187fe171-677e-4fe2-8be0-2e9d6418dca6",
+      "name": "North Close",
+      "type": "Mixed",
+      "length_km": 2.25
+    },
+    {
+      "id": "660d25b8-dafe-4f33-9238-33672029d66e",
+      "name": "Green Street",
+      "type": "Commercial",
+      "length_km": 0.27
+    },
+    {
+      "id": "7f5d14f7-ee70-45d4-bd9e-6ba59bc5f88c",
+      "name": "Mohammed Avenue",
+      "type": "Mixed",
+      "length_km": 0.55
+    },
+    {
+      "id": "0dd21752-2c7b-43cb-be68-9948bfb9ee8d",
+      "name": "Church Gardens",
+      "type": "Mixed",
+      "length_km": 2.34
+    },
+    {
+      "id": "0f25032f-ee3a-4aee-903f-a2a77f0ed17a",
+      "name": "West Road",
+      "type": "Mixed",
+      "length_km": 0.4
+    },
+    {
+      "id": "201b5677-1e5c-42fc-8e6c-f5154cc069cf",
+      "name": "Rice Close",
+      "type": "Industrial",
+      "length_km": 2.29
+    },
+    {
+      "id": "d035fa9b-d079-4a20-a4d4-95c4ab175563",
+      "name": "Maple Square",
+      "type": "Industrial",
+      "length_km": 0.64
+    },
+    {
+      "id": "f977fae6-8083-40df-b5ea-2651c4e076bf",
+      "name": "South Crescent",
+      "type": "Commercial",
+      "length_km": 1.71
+    },
+    {
+      "id": "21eee6ad-0740-477c-925e-f2ce02946d05",
+      "name": "Lake Crescent",
+      "type": "Mixed",
+      "length_km": 1.73
+    },
+    {
+      "id": "2503e176-4e9b-43ab-987c-406599963b2c",
+      "name": "Ward Terrace",
+      "type": "Mixed",
+      "length_km": 1.75
+    },
+    {
+      "id": "e735d134-358d-4752-ba23-9a0b1e89e3a5",
+      "name": "West Road",
+      "type": "Residential",
+      "length_km": 2.02
+    },
+    {
+      "id": "3868d704-6cf1-4b2c-9aed-9dd8af538a1d",
+      "name": "Fourth Lane",
+      "type": "Residential",
+      "length_km": 1.79
+    },
+    {
+      "id": "32d441be-dfc3-4906-962b-410291b14ec2",
+      "name": "Park Road",
+      "type": "Industrial",
+      "length_km": 1.08
+    },
+    {
+      "id": "dc33a5ef-a91e-407f-a250-c07271c9da28",
+      "name": "Georgina Grove",
+      "type": "Mixed",
+      "length_km": 1.22
+    },
+    {
+      "id": "7df18ac9-71dc-470b-a13e-0dc3f635a2fe",
+      "name": "Carroll Close",
+      "type": "Residential",
+      "length_km": 1.46
+    },
+    {
+      "id": "6f5e96f5-bdb0-4bf0-a723-fc1ee209eed0",
+      "name": "Norton Square",
+      "type": "Industrial",
+      "length_km": 1.55
+    },
+    {
+      "id": "cc82a1ec-ab25-4ebb-86fa-c5a126b5bc77",
+      "name": "Kirsty Grove",
+      "type": "Mixed",
+      "length_km": 0.39
+    },
+    {
+      "id": "78b0f0d7-d6f2-4e65-940e-244db12c16e6",
+      "name": "School Terrace",
+      "type": "Residential",
+      "length_km": 2.04
+    },
+    {
+      "id": "d2aec0df-8000-419a-8838-128aab3950c1",
+      "name": "Williams Square",
+      "type": "Commercial",
+      "length_km": 2.46
+    },
+    {
+      "id": "043d50d1-1d72-48b8-b444-6b31116becaa",
+      "name": "Garden Terrace",
+      "type": "Mixed",
+      "length_km": 0.48
+    },
+    {
+      "id": "091caaab-0ab0-4835-946a-0b4f0732a1d4",
+      "name": "Forest Close",
+      "type": "Industrial",
+      "length_km": 0.75
+    },
+    {
+      "id": "b1989845-7f86-414d-b47a-6996f93474af",
+      "name": "Reynolds Lane",
+      "type": "Residential",
+      "length_km": 2.37
+    },
+    {
+      "id": "35073e83-e62b-47d8-a9c4-b99539f82187",
+      "name": "Moore Street",
+      "type": "Commercial",
+      "length_km": 0.84
+    },
+    {
+      "id": "d2455ea7-cc67-44fb-ab39-7ff07a256bfc",
+      "name": "Law Close",
+      "type": "Commercial",
+      "length_km": 1.04
+    },
+    {
+      "id": "19679ff7-fcdb-4831-9c2c-9885bfb6d2e2",
+      "name": "North Square",
+      "type": "Residential",
+      "length_km": 1.46
+    },
+    {
+      "id": "f1db1856-2450-4b50-b708-7571d97adaf2",
+      "name": "East Road",
+      "type": "Residential",
+      "length_km": 1.45
+    },
+    {
+      "id": "6c104f81-9d2d-4ca2-a43c-5ce75fa56450",
+      "name": "Daisy Terrace",
+      "type": "Mixed",
+      "length_km": 2.39
+    },
+    {
+      "id": "abc97f29-cde4-4eaf-a8c7-979e5112ab8f",
+      "name": "Third Square",
+      "type": "Industrial",
+      "length_km": 1.72
+    },
+    {
+      "id": "dc75c5e2-58c7-4d96-a572-a2ad6785e3cc",
+      "name": "West Grove",
+      "type": "Commercial",
+      "length_km": 0.3
+    },
+    {
+      "id": "a0315d2f-8d8f-47da-99b3-4eac97e4458c",
+      "name": "Patrick Gardens",
+      "type": "Commercial",
+      "length_km": 1.26
+    },
+    {
+      "id": "b904c76a-a947-41d5-ac61-486044d03359",
+      "name": "Hill Close",
+      "type": "Residential",
+      "length_km": 1.12
+    },
+    {
+      "id": "b6d4eac4-6f46-4683-a28e-3ccca9d8a45f",
+      "name": "Amy Gardens",
+      "type": "Commercial",
+      "length_km": 1.0
+    },
+    {
+      "id": "4a04911f-1509-48f4-92b4-3ed2ca22bd7f",
+      "name": "Deborah Square",
+      "type": "Industrial",
+      "length_km": 0.88
+    },
+    {
+      "id": "781045bc-5394-4ca8-9e05-f3444f8f00d3",
+      "name": "Philip Crescent",
+      "type": "Mixed",
+      "length_km": 0.74
+    },
+    {
+      "id": "7f90b327-4538-4d36-802e-4ed192b94fe5",
+      "name": "Elizabeth Street",
+      "type": "Mixed",
+      "length_km": 2.23
+    },
+    {
+      "id": "00ed7bc4-77c6-46e0-97a2-dc9fa8e0dc08",
+      "name": "Rose Road",
+      "type": "Commercial",
+      "length_km": 2.17
+    },
+    {
+      "id": "242f8520-8632-43fc-89ef-a6969944cc19",
+      "name": "Oak Street",
+      "type": "Residential",
+      "length_km": 1.84
+    },
+    {
+      "id": "159b38e7-0921-4779-a3a5-7b88db7193bb",
+      "name": "Mitchell Square",
+      "type": "Mixed",
+      "length_km": 2.4
+    },
+    {
+      "id": "146a7d9b-e2c0-43dc-8663-24af9948ea01",
+      "name": "Kennedy Lane",
+      "type": "Industrial",
+      "length_km": 0.42
+    },
+    {
+      "id": "5395b67b-7806-4193-ad39-9e517de1db16",
+      "name": "Hill Terrace",
+      "type": "Commercial",
+      "length_km": 2.31
+    },
+    {
+      "id": "c44adc8d-ae29-44f2-b0e1-ac812a27b8db",
+      "name": "East Close",
+      "type": "Commercial",
+      "length_km": 1.03
+    },
+    {
+      "id": "7c3f5970-2dc2-4a3f-a449-fb94251ccd74",
+      "name": "Sanders Square",
+      "type": "Commercial",
+      "length_km": 0.77
+    },
+    {
+      "id": "d9d19d79-2ee4-49a1-9556-8e8b9b932f76",
+      "name": "Lake Close",
+      "type": "Residential",
+      "length_km": 0.97
+    },
+    {
+      "id": "28f7cee9-9232-4cf6-9091-cd88dab686da",
+      "name": "Park Street",
+      "type": "Mixed",
+      "length_km": 0.51
+    },
+    {
+      "id": "83353661-0551-43d9-89ca-fc1dbd4fc1b1",
+      "name": "West Street",
+      "type": "Mixed",
+      "length_km": 2.05
+    },
+    {
+      "id": "91795eb3-2c55-4eb5-a45b-dcfbe66bf959",
+      "name": "Third Close",
+      "type": "Industrial",
+      "length_km": 2.37
+    }
+  ],
+  "businesses": [
+    {
+      "id": "951087ff-677b-46de-a108-5dd2e0448463",
+      "name": "North  Grocery Store",
+      "type": "Grocery Store",
+      "street": "North Close",
+      "employees": 44,
+      "established_year": 2011
+    },
+    {
+      "id": "f0722f16-b8d1-4b72-bee8-8db24a525727",
+      "name": "West L Diner",
+      "type": "Restaurant/Café",
+      "street": "West Road",
+      "employees": 1,
+      "established_year": 1951
+    },
+    {
+      "id": "3bbc792e-73e0-44c9-b128-c54ea782fde8",
+      "name": "Green Accounting",
+      "type": "Accounting",
+      "street": "Moore Street",
+      "employees": 14,
+      "established_year": 1983
+    },
+    {
+      "id": "30d08416-9357-4355-b87a-132f2060b7e4",
+      "name": "Tony's Pizza",
+      "type": "Restaurant/Café",
+      "street": "Garden Terrace",
+      "employees": 5,
+      "established_year": 1973
+    },
+    {
+      "id": "756a0a48-8e15-4daa-a7f1-b50d5013d348",
+      "name": "Corner Station",
+      "type": "Gas Station",
+      "street": "Norton Square",
+      "employees": 1,
+      "established_year": 1960
+    },
+    {
+      "id": "0d277f25-bd02-4c7d-a81b-23449f99ef1a",
+      "name": "Lake H Bank",
+      "type": "Bank",
+      "street": "Hill Terrace",
+      "employees": 35,
+      "established_year": 1970
+    },
+    {
+      "id": "17b68c81-062a-49db-833e-647b9a20fc91",
+      "name": "Rhodes Other",
+      "type": "Other",
+      "street": "Kennedy Lane",
+      "employees": 43,
+      "established_year": 1960
+    },
+    {
+      "id": "3b6e685a-a273-4bae-a9df-ac437db11ac7",
+      "name": "Corner Gas",
+      "type": "Gas Station",
+      "street": "Elizabeth Street",
+      "employees": 15,
+      "established_year": 1988
+    },
+    {
+      "id": "cc445995-f6f9-4990-8545-2e309446da9a",
+      "name": "Parkes's Insurance",
+      "type": "Insurance",
+      "street": "West Square",
+      "employees": 18,
+      "established_year": 1964
+    },
+    {
+      "id": "e0eed96b-c7f3-465a-8893-6d6e0edcc61f",
+      "name": "Batess Pharmacy",
+      "type": "Pharmacy",
+      "street": "Third Square",
+      "employees": 19,
+      "established_year": 1980
+    },
+    {
+      "id": "a243c306-77d7-4d23-8191-ed7160fd7bd4",
+      "name": "Professional Medical Office",
+      "type": "Medical Office",
+      "street": "Church Gardens",
+      "employees": 25,
+      "established_year": 1997
+    },
+    {
+      "id": "dd717f36-d6ef-4804-97eb-3a6bb3442eb7",
+      "name": "Village Fuel",
+      "type": "Gas Station",
+      "street": "Carroll Close",
+      "employees": 5,
+      "established_year": 2010
+    },
+    {
+      "id": "f5ffb8c5-d6fd-4ef6-a1e4-de5a1c19f4a4",
+      "name": "Doroth Bakery",
+      "type": "Bakery",
+      "street": "Park Street",
+      "employees": 5,
+      "established_year": 1980
+    },
+    {
+      "id": "be1224a0-3e7a-407b-a4df-29e65b2bdcca",
+      "name": "Ellieh Dental Office",
+      "type": "Dental Office",
+      "street": "South Crescent",
+      "employees": 5,
+      "established_year": 1962
+    },
+    {
+      "id": "5ac6a4f4-93af-49b5-9c0a-35f3dc638c10",
+      "name": "Tyler's Store",
+      "type": "Retail Store",
+      "street": "Maple Square",
+      "employees": 26,
+      "established_year": 1980
+    },
+    {
+      "id": "c445a6e4-62a4-440f-8a12-4494d87f42b0",
+      "name": "The Silver Table",
+      "type": "Restaurant/Café",
+      "street": "Ward Terrace",
+      "employees": 10,
+      "established_year": 2017
+    },
+    {
+      "id": "faed603c-4eb1-4e95-9730-409b92a50e6e",
+      "name": "Professional Hair Salon",
+      "type": "Hair Salon/Barber",
+      "street": "Elizabeth Street",
+      "employees": 8,
+      "established_year": 1970
+    },
+    {
+      "id": "33e9ddff-18ca-409c-b400-c8cea7c01bde",
+      "name": "The Old Store",
+      "type": "Retail Store",
+      "street": "Rice Close",
+      "employees": 15,
+      "established_year": 1957
+    },
+    {
+      "id": "c7712431-8bb9-49ce-8ee7-66cf592f3a8c",
+      "name": "Expert Pet Store",
+      "type": "Pet Store",
+      "street": "Sanders Square",
+      "employees": 18,
+      "established_year": 1976
+    },
+    {
+      "id": "294c41d7-0acf-4b75-b59a-0198b73c36df",
+      "name": "Johnson's Hair Salon",
+      "type": "Hair Salon/Barber",
+      "street": "Carroll Close",
+      "employees": 36,
+      "established_year": 1990
+    },
+    {
+      "id": "9168ed64-8689-4572-9c24-aebe9ca5673e",
+      "name": "South  Bank",
+      "type": "Bank",
+      "street": "Maple Square",
+      "employees": 46,
+      "established_year": 2000
+    },
+    {
+      "id": "ca740478-c131-4757-a361-aa73ef706840",
+      "name": "The New Market",
+      "type": "Retail Store",
+      "street": "Garden Terrace",
+      "employees": 45,
+      "established_year": 1993
+    },
+    {
+      "id": "4881cdd4-be99-45e7-a6ba-f1bcc1197c4c",
+      "name": "Woodward's Emporium",
+      "type": "Retail Store",
+      "street": "Law Close",
+      "employees": 9,
+      "established_year": 1997
+    },
+    {
+      "id": "9c172532-e693-488b-8bf4-0b3439325e8f",
+      "name": "Jakevi Grill",
+      "type": "Restaurant/Café",
+      "street": "Law Close",
+      "employees": 34,
+      "established_year": 1988
+    },
+    {
+      "id": "0b6981d5-e03b-4487-874e-8cd8f24a1158",
+      "name": "Green Hair Salon",
+      "type": "Hair Salon/Barber",
+      "street": "Oak Street",
+      "employees": 39,
+      "established_year": 2019
+    },
+    {
+      "id": "9ab7e317-8439-4c6b-9b43-4ad97e3aa714",
+      "name": "Collins's Medical Office",
+      "type": "Medical Office",
+      "street": "Rose Road",
+      "employees": 35,
+      "established_year": 1995
+    },
+    {
+      "id": "51071341-15f7-4119-9494-f3b36f239f23",
+      "name": "Reed's Real Estate",
+      "type": "Real Estate",
+      "street": "Fourth Lane",
+      "employees": 3,
+      "established_year": 1974
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "49df5c3e-f8a2-4b3e-9b13-fbd8e4bd5c11",
+      "name": "Adrianfu Gazebo",
+      "type": "Gazebo",
+      "street": "Norton Square",
+      "established_year": 1935,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "ec4a0e5e-67c6-427a-a009-7c500b647d60",
+      "name": "Knightfo Community Center",
+      "type": "Community Center",
+      "street": "Fourth Lane",
+      "established_year": 1945,
+      "historical_significance": "Medium"
+    },
+    {
+      "id": "3f9778fe-1311-4b50-a842-6ca02f0c5ee9",
+      "name": "Port Lee Courthouse",
+      "type": "Courthouse",
+      "street": "West Street",
+      "established_year": 1859,
+      "historical_significance": "High"
+    },
+    {
+      "id": "53cf3db5-1092-4274-b5a2-27694a5b605a",
+      "name": "Mr Jordan Hewitt Statue",
+      "type": "Statue",
+      "street": "Forest Close",
+      "established_year": 1899,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "98d7c08c-cd7e-4a60-b58f-7d57090351c1",
+      "name": "Lake Lia Fountain",
+      "type": "Fountain",
+      "street": "South Crescent",
+      "established_year": 1979,
+      "historical_significance": "Medium"
+    },
+    {
+      "id": "b7963aec-9deb-4ef2-96be-0bb9f1f4f457",
+      "name": "Old Opera House",
+      "type": "Historic Building",
+      "street": "East Close",
+      "established_year": 1845,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "fbde0916-301d-40b4-90cb-6543b6031162",
+      "name": "Royville Cemetery",
+      "type": "Cemetery",
+      "street": "Norton Square",
+      "established_year": 1817,
+      "historical_significance": "Medium"
+    },
+    {
+      "id": "4182ebca-178d-4ae8-bec8-0c945784ef4c",
+      "name": "Russells Community Center",
+      "type": "Community Center",
+      "street": "Lake Close",
+      "established_year": 1979,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "af82e4ac-d29b-4e7a-8eda-31a042a64faa",
+      "name": "South Ra History Museum",
+      "type": "Museum",
+      "street": "Law Close",
+      "established_year": 1954,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "2622014b-c0ea-4a6e-8b9d-08f3a36e24ab",
+      "name": "Alexandr Clock Tower",
+      "type": "Clock Tower",
+      "street": "Deborah Square",
+      "established_year": 1916,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "3f0c800d-cdd1-4eec-bacc-576a99cf0a87",
+      "name": "North Pa Clock Tower",
+      "type": "Clock Tower",
+      "street": "East Road",
+      "established_year": 1872,
+      "historical_significance": "Medium"
+    },
+    {
+      "id": "dda3924e-cdc6-4e6e-a316-d977628afe98",
+      "name": "Carly Parry-Giles Statue",
+      "type": "Statue",
+      "street": "Patrick Gardens",
+      "established_year": 1804,
+      "historical_significance": "Medium"
+    },
+    {
+      "id": "e89ac60f-6b7b-4df1-9446-28cd7d44af85",
+      "name": "Cox Memorial",
+      "type": "Monument",
+      "street": "Patrick Gardens",
+      "established_year": 1817,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "efe83429-4ea8-4d64-8339-1440059f1507",
+      "name": "Gilbertt Post Office",
+      "type": "Post Office",
+      "street": "Deborah Square",
+      "established_year": 1807,
+      "historical_significance": "Low"
+    },
+    {
+      "id": "bc1de8a5-6f09-4756-b235-c5f39505f4f1",
+      "name": "Scottbur Historic Bridge",
+      "type": "Historic Bridge",
+      "street": "Lake Close",
+      "established_year": 2016,
+      "historical_significance": "High"
+    },
+    {
+      "id": "63cf1d35-7914-44da-96e9-c89d329d16bb",
+      "name": "Lake Der Fountain",
+      "type": "Fountain",
+      "street": "School Terrace",
+      "established_year": 1825,
+      "historical_significance": "Medium"
+    },
+    {
+      "id": "c25908cb-d616-488e-90ee-1c902b5a2753",
+      "name": "South Da Historic House",
+      "type": "Historic House",
+      "street": "Georgina Grove",
+      "established_year": 1903,
+      "historical_significance": "Medium"
+    },
+    {
+      "id": "350c66d3-d5a9-4cba-ad76-8d564a2877f8",
+      "name": "Millslan Police Station",
+      "type": "Police Station",
+      "street": "North Square",
+      "established_year": 1866,
+      "historical_significance": "High"
+    }
+  ],
+  "parks": [
+    {
+      "id": "861b8f03-5a1a-454c-a6dc-e7315b2f0f8f",
+      "name": "Oak Sports Complex",
+      "type": "Sports Complex",
+      "area_hectares": 15.49,
+      "facilities": [
+        "Walking Trails",
+        "Parking",
+        "Restrooms",
+        "Parking"
+      ]
+    },
+    {
+      "id": "edf4d516-12d5-49c1-852f-d5e7fa0a331b",
+      "name": "Memorial Soccer Field",
+      "type": "Soccer Field",
+      "area_hectares": 12.96,
+      "facilities": [
+        "Restrooms",
+        "Picnic Areas",
+        "Sports Fields",
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "48d99de5-3198-404d-860c-0913c927b6c5",
+      "name": "Memorial Neighborhood Park",
+      "type": "Neighborhood Park",
+      "area_hectares": 10.99,
+      "facilities": [
+        "Restrooms",
+        "Walking Trails",
+        "Playground",
+        "Walking Trails"
+      ]
+    },
+    {
+      "id": "86a0c281-534e-4ec4-a77d-46c5ee2f87f0",
+      "name": "Memorial Picnic Area",
+      "type": "Picnic Area",
+      "area_hectares": 7.22,
+      "facilities": [
+        "Walking Trails",
+        "Sports Fields"
+      ]
+    },
+    {
+      "id": "7f3e796d-83b0-40f9-a14e-eab689c62908",
+      "name": "Lily Playground",
+      "type": "Playground",
+      "area_hectares": 18.25,
+      "facilities": [
+        "Parking"
+      ]
+    },
+    {
+      "id": "756edde0-303b-41d1-aadf-b61519c5910b",
+      "name": "Sunrise Pocket Park",
+      "type": "Pocket Park",
+      "area_hectares": 11.27,
+      "facilities": [
+        "Sports Fields",
+        "Sports Fields"
+      ]
+    },
+    {
+      "id": "f61ebfb2-21d8-4a59-9f0a-16a54e6d820c",
+      "name": "Hughes Soccer Field",
+      "type": "Soccer Field",
+      "area_hectares": 10.77,
+      "facilities": [
+        "Parking",
+        "Restrooms",
+        "Walking Trails",
+        "Walking Trails"
+      ]
+    },
+    {
+      "id": "161f360c-1990-488c-935d-1f8f09e665f5",
+      "name": "Elm Picnic Area",
+      "type": "Picnic Area",
+      "area_hectares": 6.25,
+      "facilities": [
+        "Walking Trails",
+        "Sports Fields",
+        "Restrooms"
+      ]
+    },
+    {
+      "id": "91456e90-a580-48a5-b617-0883497faa0a",
+      "name": "Sunset Pocket Park",
+      "type": "Pocket Park",
+      "area_hectares": 13.47,
+      "facilities": [
+        "Sports Fields",
+        "Sports Fields",
+        "Walking Trails",
+        "Sports Fields"
+      ]
+    }
+  ],
+  "schools": [
+    {
+      "id": "f3575f14-282e-4bee-987a-095ec0176b23",
+      "name": "Dixon Community College",
+      "type": "Community College",
+      "street": "Lake Close",
+      "students": 967,
+      "established_year": 1918
+    },
+    {
+      "id": "bb2c6549-5edd-4741-b16a-020f94b06fcf",
+      "name": "Holt Preschool",
+      "type": "Preschool",
+      "street": "Lake Close",
+      "students": 374,
+      "established_year": 1923
+    },
+    {
+      "id": "cdb1a568-a065-40f2-b41c-261a71a0be85",
+      "name": "Bennett Elementary School",
+      "type": "Elementary School",
+      "street": "Third Square",
+      "students": 231,
+      "established_year": 1907
+    },
+    {
+      "id": "c4a4cbab-433d-458b-9a0c-4f9081b7b6e9",
+      "name": "Davies Private School",
+      "type": "Private School",
+      "street": "Elizabeth Street",
+      "students": 447,
+      "established_year": 1963
+    },
+    {
+      "id": "1ff24946-492d-466d-aecd-87a60a03a994",
+      "name": "Sutton Preschool",
+      "type": "Preschool",
+      "street": "Elizabeth Street",
+      "students": 1076,
+      "established_year": 2008
+    },
+    {
+      "id": "0cd4a6b3-e096-4777-9fe5-2c13d904b636",
+      "name": "Young Private School",
+      "type": "Private School",
+      "street": "Law Close",
+      "students": 740,
+      "established_year": 1998
+    },
+    {
+      "id": "73005312-66fa-490c-bb91-97671cba5eba",
+      "name": "Patel Community College",
+      "type": "Community College",
+      "street": "Ward Terrace",
+      "students": 875,
+      "established_year": 1921
+    }
+  ],
+  "services": [
+    {
+      "id": "ccb6dc22-b570-4d35-8c36-88d55170f634",
+      "name": "Mackney Emergency Services",
+      "type": "Emergency Services",
+      "street": "Carroll Close",
+      "operating_hours": "9:00 AM - 6:00 PM",
+      "staff_count": 22
+    },
+    {
+      "id": "4822c1bb-e7f6-4365-a62f-b16242e3116a",
+      "name": "Mackney Fire Station",
+      "type": "Fire Station",
+      "street": "Rose Road",
+      "operating_hours": "9:00 AM - 5:00 PM",
+      "staff_count": 20
+    },
+    {
+      "id": "c0aef456-d05c-4ff3-90ce-e90b1effd66e",
+      "name": "Mackney Senior Center",
+      "type": "Senior Center",
+      "street": "Rice Close",
+      "operating_hours": "8:00 AM - 6:00 PM",
+      "staff_count": 5
+    },
+    {
+      "id": "ea99aa4e-312c-45ed-b8bb-d8d2683144de",
+      "name": "Mackney Water Department",
+      "type": "Water Department",
+      "street": "Mohammed Avenue",
+      "operating_hours": "9:00 AM - 8:00 PM",
+      "staff_count": 4
+    },
+    {
+      "id": "415db6e2-6a7e-4359-a30e-e7b391b3b844",
+      "name": "Mackney Public Health Office",
+      "type": "Public Health Office",
+      "street": "Moore Street",
+      "operating_hours": "8:00 AM - 5:00 PM",
+      "staff_count": 8
+    },
+    {
+      "id": "9e981067-d81a-410a-92e6-c6b62dc06fc9",
+      "name": "Mackney Social Services",
+      "type": "Social Services",
+      "street": "Hill Close",
+      "operating_hours": "9:00 AM - 4:00 PM",
+      "staff_count": 7
+    },
+    {
+      "id": "16c76282-0c68-403a-bb9c-5abf9724f7d4",
+      "name": "Mackney Public Health Office",
+      "type": "Public Health Office",
+      "street": "South Crescent",
+      "operating_hours": "9:00 AM - 8:00 PM",
+      "staff_count": 2
+    },
+    {
+      "id": "e604a6b3-838c-4a79-82fb-8da7579e8507",
+      "name": "Mackney Senior Center",
+      "type": "Senior Center",
+      "street": "Rice Close",
+      "operating_hours": "7:00 AM - 5:00 PM",
+      "staff_count": 17
+    },
+    {
+      "id": "550ac078-e5de-4bc9-bf72-57750ef8e391",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "Patrick Gardens",
+      "operating_hours": "7:00 AM - 6:00 PM",
+      "staff_count": 16
+    },
+    {
+      "id": "eae716b4-a3db-4533-b7e3-9d47b252ebf6",
+      "name": "Mackney Electric Utility",
+      "type": "Electric Utility",
+      "street": "Carroll Close",
+      "operating_hours": "9:00 AM - 8:00 PM",
+      "staff_count": 2
+    },
+    {
+      "id": "4a0d9e46-aaaf-4a11-a2fb-c3aa7026f761",
+      "name": "Mackney Emergency Services",
+      "type": "Emergency Services",
+      "street": "West Road",
+      "operating_hours": "8:00 AM - 5:00 PM",
+      "staff_count": 4
+    },
+    {
+      "id": "f6d79312-99e4-4594-8593-02d45e9cd849",
+      "name": "Mackney Water Department",
+      "type": "Water Department",
+      "street": "Third Square",
+      "operating_hours": "6:00 AM - 4:00 PM",
+      "staff_count": 24
+    },
+    {
+      "id": "a12ced96-c387-4f6c-92cc-ca1b43f661a4",
+      "name": "Mackney Senior Center",
+      "type": "Senior Center",
+      "street": "Fourth Lane",
+      "operating_hours": "7:00 AM - 4:00 PM",
+      "staff_count": 5
+    },
+    {
+      "id": "f50be1fd-a4a4-43f7-875a-55da7a5b8bb2",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "South Crescent",
+      "operating_hours": "9:00 AM - 6:00 PM",
+      "staff_count": 11
+    },
+    {
+      "id": "102d1e95-e1d0-46bb-8b5d-d62b3274cdd6",
+      "name": "Mackney Waste Management",
+      "type": "Waste Management",
+      "street": "West Square",
+      "operating_hours": "6:00 AM - 7:00 PM",
+      "staff_count": 16
+    },
+    {
+      "id": "e28f7b57-7e62-4762-b17d-ccdf303d30ef",
+      "name": "Mackney Waste Management",
+      "type": "Waste Management",
+      "street": "Third Close",
+      "operating_hours": "8:00 AM - 5:00 PM",
+      "staff_count": 24
+    },
+    {
+      "id": "1a233abb-979b-49c9-aa55-40173c28184c",
+      "name": "Mackney Waste Management",
+      "type": "Waste Management",
+      "street": "Daisy Terrace",
+      "operating_hours": "7:00 AM - 6:00 PM",
+      "staff_count": 12
+    },
+    {
+      "id": "696e0a3d-0f98-4c57-a3b9-b560a3197de1",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "Deborah Square",
+      "operating_hours": "7:00 AM - 6:00 PM",
+      "staff_count": 16
+    },
+    {
+      "id": "89b8ee2d-8bb5-4378-baa4-f75c97671354",
+      "name": "Mackney Water Department",
+      "type": "Water Department",
+      "street": "Ian Close",
+      "operating_hours": "6:00 AM - 6:00 PM",
+      "staff_count": 22
+    },
+    {
+      "id": "2e4a261c-0595-4e47-aef8-3e345ad6c8bb",
+      "name": "Mackney Public Transit",
+      "type": "Public Transit",
+      "street": "Amy Gardens",
+      "operating_hours": "8:00 AM - 6:00 PM",
+      "staff_count": 25
+    },
+    {
+      "id": "6f2b12b5-1df8-43ed-a418-afadc92d2530",
+      "name": "Mackney Public Works",
+      "type": "Public Works",
+      "street": "Carroll Close",
+      "operating_hours": "7:00 AM - 6:00 PM",
+      "staff_count": 14
+    },
+    {
+      "id": "a8f54e13-e1fe-44ff-859b-097bde435b98",
+      "name": "Mackney Public Transit",
+      "type": "Public Transit",
+      "street": "Deborah Square",
+      "operating_hours": "8:00 AM - 7:00 PM",
+      "staff_count": 10
+    },
+    {
+      "id": "889d12d3-087d-4624-89e2-a7fff555aeea",
+      "name": "Mackney Food Bank",
+      "type": "Food Bank",
+      "street": "Fifth Avenue",
+      "operating_hours": "7:00 AM - 5:00 PM",
+      "staff_count": 20
+    },
+    {
+      "id": "4541247e-5900-477f-a2bc-eed56ea97829",
+      "name": "Mackney Electric Utility",
+      "type": "Electric Utility",
+      "street": "West Street",
+      "operating_hours": "8:00 AM - 6:00 PM",
+      "staff_count": 3
+    },
+    {
+      "id": "20dc509f-8528-436c-9f22-6bfc8013b784",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "Mitchell Square",
+      "operating_hours": "9:00 AM - 8:00 PM",
+      "staff_count": 14
+    },
+    {
+      "id": "8bc638aa-82d8-4fbe-8fff-47929f6d7b43",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "School Terrace",
+      "operating_hours": "7:00 AM - 8:00 PM",
+      "staff_count": 8
+    },
+    {
+      "id": "a8c8a28b-1fc6-494c-8d1e-d5e7473e7322",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "Rice Close",
+      "operating_hours": "6:00 AM - 8:00 PM",
+      "staff_count": 19
+    },
+    {
+      "id": "e874fbda-3463-4472-8d20-d7127d4eb758",
+      "name": "Mackney Public Works",
+      "type": "Public Works",
+      "street": "North Close",
+      "operating_hours": "6:00 AM - 4:00 PM",
+      "staff_count": 18
+    },
+    {
+      "id": "d18201d6-f3d7-4b99-8762-2b8948114bb9",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "Hill Terrace",
+      "operating_hours": "6:00 AM - 6:00 PM",
+      "staff_count": 14
+    },
+    {
+      "id": "5bc996d2-a086-41e4-9db4-58544636b9e7",
+      "name": "Mackney Food Bank",
+      "type": "Food Bank",
+      "street": "Third Square",
+      "operating_hours": "9:00 AM - 5:00 PM",
+      "staff_count": 14
+    },
+    {
+      "id": "1b9b3540-76eb-464b-a0a8-9e99f54348f2",
+      "name": "Mackney Food Bank",
+      "type": "Food Bank",
+      "street": "Green Street",
+      "operating_hours": "8:00 AM - 4:00 PM",
+      "staff_count": 12
+    },
+    {
+      "id": "1c068ef4-12d8-4428-b8f3-5152f67adf86",
+      "name": "Mackney Food Bank",
+      "type": "Food Bank",
+      "street": "Norton Square",
+      "operating_hours": "9:00 AM - 7:00 PM",
+      "staff_count": 22
+    },
+    {
+      "id": "67ec92e5-d194-4b5c-b2c7-1fe197d38b04",
+      "name": "Mackney Police Station",
+      "type": "Police Station",
+      "street": "Fifth Avenue",
+      "operating_hours": "6:00 AM - 5:00 PM",
+      "staff_count": 5
+    },
+    {
+      "id": "02ba1213-3790-46ac-bfde-c4b60e786aa0",
+      "name": "Mackney Electric Utility",
+      "type": "Electric Utility",
+      "street": "Green Street",
+      "operating_hours": "6:00 AM - 4:00 PM",
+      "staff_count": 2
+    },
+    {
+      "id": "90526ecc-e330-4bc6-99b2-162adc8c63a1",
+      "name": "Mackney Code Enforcement",
+      "type": "Code Enforcement",
+      "street": "Church Gardens",
+      "operating_hours": "8:00 AM - 5:00 PM",
+      "staff_count": 25
+    },
+    {
+      "id": "47ba8f0e-af1c-488b-9f0b-08d9fc674e57",
+      "name": "Mackney Social Services",
+      "type": "Social Services",
+      "street": "Garden Terrace",
+      "operating_hours": "9:00 AM - 5:00 PM",
+      "staff_count": 17
+    },
+    {
+      "id": "aa4f1fd7-c220-49f2-b8d0-20482422fe53",
+      "name": "Mackney Senior Center",
+      "type": "Senior Center",
+      "street": "Fourth Lane",
+      "operating_hours": "8:00 AM - 5:00 PM",
+      "staff_count": 9
+    },
+    {
+      "id": "c9b1ec52-0de2-495a-ad0b-6b05132a6341",
+      "name": "Mackney Post Office",
+      "type": "Post Office",
+      "street": "East Terrace",
+      "operating_hours": "6:00 AM - 6:00 PM",
+      "staff_count": 16
+    }
+  ],
+  "generated_at": "2026-06-01T21:01:35.550303",
+  "newspaper": {
+    "name": "Mackney Gazette",
+    "tagline": "Your Community, Your News",
+    "founded_year": 1883,
+    "publication_frequency": "daily"
+  }
+}

@@ -8,7 +8,7 @@ import os
 import litellm
 from typing import List, Dict, Any, Optional
 
-DEFAULT_MODEL = os.environ.get('LITELLM_MODEL', 'gemini/gemini-2.0-flash')
+DEFAULT_MODEL = os.environ.get('LITELLM_MODEL', 'gemini/gemini-2.5-flash')
 
 litellm.suppress_debug_info = True
 

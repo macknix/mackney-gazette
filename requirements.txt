@@ -1,5 +1,6 @@
 faker
 pyyaml
 litellm
+json-repair
 pandas
 httpx>=0.28.0
