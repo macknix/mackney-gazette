@@ -66,7 +66,8 @@ def generate_articles_daily(config_path: Optional[str] = None) -> List[Dict[str,
 
     # Backup articles.csv if enabled
     if backup_before_save:
-        data_dir = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) / 'data'
+        _default = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) / 'data'
+        data_dir = Path(os.environ.get('DATA_DIR', _default))
         articles_csv = data_dir / 'articles.csv'
         
         if articles_csv.exists():
@@ -146,7 +147,8 @@ def generate_articles_daily(config_path: Optional[str] = None) -> List[Dict[str,
     # Prune old articles if limit is set
     if article_limit > 0:
         try:
-            data_dir = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) / 'data'
+            _default = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) / 'data'
+            data_dir = Path(os.environ.get('DATA_DIR', _default))
             articles_csv = data_dir / 'articles.csv'
             
             if articles_csv.exists():

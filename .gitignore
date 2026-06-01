@@ -1,9 +1,11 @@
 credentials
 data/*
-mackney-gazette-venv
+venv/
+mackney-gazette-venv/
 .env
-venv
+.env.*
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.DS_Store

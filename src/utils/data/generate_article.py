@@ -158,10 +158,10 @@ def generate_article_content(
     
     # Set model parameters for article generation
     model_args = {
-        'model': 'gpt-4o-mini',  # Use the appropriate model
-        'temperature': 0.8,  # Slightly higher temperature for creativity
-        'max_tokens': 2000,  # Allow enough tokens for a full article
-        'response_format': {'type': 'json_object'}  # Request JSON response
+        'model': 'gemini/gemini-2.0-flash',
+        'temperature': 0.8,
+        'max_tokens': 2000,
+        'response_format': {'type': 'json_object'}
     }
     
     try:
@@ -216,14 +216,11 @@ def create_new_story():
     Returns:
         Dict containing the generated article data
     """
-    # Get the directory of the current file
     current_dir = Path(__file__).parent
-    data_dir = Path(current_dir).parent.parent.parent / 'data'
-    
-    # Load configuration
+    data_dir = Path(os.environ.get('DATA_DIR', Path(current_dir).parent.parent.parent / 'data'))
     config_file = current_dir / 'article_config.yaml'
     config = load_config(config_file)
-    
+
     # Load town and people data
     town_data_file = data_dir / 'town_data.json'
     people_data_file = data_dir / 'people_data.csv'
@@ -670,12 +667,9 @@ def continue_existing_story():
         Dict containing the generated continuation article data, or None if no suitable story found
     """
     print("\n=== SEARCHING FOR ONGOING STORIES TO CONTINUE ===")
-    
-    # Get the directory of the current file
+
     current_dir = Path(__file__).parent
-    data_dir = Path(current_dir).parent.parent.parent / 'data'
-    
-    # Load configuration
+    data_dir = Path(os.environ.get('DATA_DIR', Path(current_dir).parent.parent.parent / 'data'))
     config_file = current_dir / 'article_config.yaml'
     config = load_config(config_file)
     
@@ -1013,7 +1007,7 @@ def generate_continuation_article_content(
     
     # Set model parameters for article generation
     model_args = {
-        'model': 'gpt-4o-mini',
+        'model': 'gemini/gemini-2.0-flash',
         'temperature': 0.8,
         'max_tokens': 2000,
         'response_format': {'type': 'json_object'}

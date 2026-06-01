@@ -107,18 +107,20 @@ def initialise_town(config_path: Optional[str] = None):
     
     print("\n=========================")
     
+    data_dir = os.environ.get('DATA_DIR', 'data')
+
     # Save town data to JSON
-    json_path = town_generator.save_to_json("town_data.json", "data")
+    json_path = town_generator.save_to_json("town_data.json", data_dir)
     print(f"Town data saved to {json_path}")
-    
+
     # Determine population size
     town_population = town_data.get("population", 1000)
     num_people = max(min_people, int(town_population * population_scale))
     print(f"Generating population: {num_people} people")
-    
+
     # Generate and save demographic data to CSV
-    csv_path = generate_demographic_csv(num_people, "people_data.csv", 
-                                      output_dir="data", locale=locale, seed=seed)
+    csv_path = generate_demographic_csv(num_people, "people_data.csv",
+                                        output_dir=data_dir, locale=locale, seed=seed)
     print(f"Population data saved to {csv_path}")
     
     # Display population statistics
